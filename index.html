@@ -1,8 +1,10 @@
-<html lang="en"><head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Weekly CRM Report</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
 :root{--bg:#1e2232;--sf:#262d3f;--sf2:#2e3650;--bd:rgba(255,255,255,0.09);--bd2:rgba(255,255,255,0.15);--tx:#f4f6fa;--mu:#9ba3ba;--ac:#4f8ef7;--gn:#34d399;--am:#fbbf24;--rd:#f87171;--tl:#2dd4bf;--pu:#a78bfa;}
@@ -142,13 +144,13 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 @media(max-width:640px){.cg{grid-template-columns:1fr;}.card.full{grid-column:1;}.mg{grid-template-columns:repeat(2,1fr);}.main{padding:1rem;}.fgrid{grid-template-columns:1fr;}}
 </style>
 </head>
-<body data-new-gr-c-s-check-loaded="14.1286.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1286.0">
+<body>
 
 <!-- PIN MODAL -->
 <div class="overlay" id="pinOv">
   <div class="modal">
-    <h3 id="ptitle">Enter your PIN</h3>
-    <p id="pdesc">Enter PIN to edit, or continue as viewer.</p>
+    <h3 id="ptitle">Set your editor PIN</h3>
+    <p id="pdesc">Choose a 4-digit PIN. Share this dashboard — only you can edit with it.</p>
     <div class="pin-dots"><div class="dot" id="d0"></div><div class="dot" id="d1"></div><div class="dot" id="d2"></div><div class="dot" id="d3"></div></div>
     <div class="perr" id="perr"></div>
     <div class="keypad">
@@ -165,18 +167,18 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 <div class="overlay" id="addOv">
   <div class="modal">
     <h3>Add new week</h3><p>Fill in the key numbers — you can edit everything else after.</p>
-    <div class="frow"><label>Week label</label><input id="mL" placeholder="Apr 4–Apr 10, 26"></div>
-    <div class="frow"><label>Short name (tab)</label><input id="mS" placeholder="Apr 4"></div>
+    <div class="frow"><label>Week label</label><input id="mL" placeholder="Apr 4–Apr 10, 26"/></div>
+    <div class="frow"><label>Short name (tab)</label><input id="mS" placeholder="Apr 4"/></div>
     <div class="frow"><label>Key metrics</label><div class="fgrid">
-      <input id="mA" placeholder="Active projects" type="number">
-      <input id="mNS" placeholder="New sales" type="number">
-      <input id="mI" placeholder="Installs" type="number">
-      <input id="mP" placeholder="PTOs" type="number">
-      <input id="mC" placeholder="All-time closed" type="number">
-      <input id="mCn" placeholder="All-time cancelled" type="number">
+      <input id="mA" placeholder="Active projects" type="number"/>
+      <input id="mNS" placeholder="New sales" type="number"/>
+      <input id="mI" placeholder="Installs" type="number"/>
+      <input id="mP" placeholder="PTOs" type="number"/>
+      <input id="mC" placeholder="All-time closed" type="number"/>
+      <input id="mCn" placeholder="All-time cancelled" type="number"/>
     </div></div>
-    <div class="frow"><label>Total Sale→PTO (days)</label><input id="mCy" placeholder="e.g. 280" type="number"></div>
-    <div class="frow"><label>Permit→Approval (days)</label><input id="mPm" placeholder="e.g. 45" type="number"></div>
+    <div class="frow"><label>Total Sale→PTO (days)</label><input id="mCy" placeholder="e.g. 280" type="number"/></div>
+    <div class="frow"><label>Permit→Approval (days)</label><input id="mPm" placeholder="e.g. 45" type="number"/></div>
     <div class="mbtns"><button class="btn btn-muted" onclick="closeAdd()">Cancel</button><button class="btn btn-blue" onclick="confirmAdd()">Add week</button></div>
   </div>
 </div>
@@ -186,8 +188,8 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
   <div class="modal">
     <h3>Connect Live CRM</h3>
     <p>Paste your Zoho access token to load live data. Tokens expire after 1 hour.</p>
-    <div class="frow"><label>Scope needed</label><input readonly="" value="ZohoCRM.modules.deals.READ,ZohoCRM.modules.leads.READ,ZohoCRM.modules.contacts.READ" style="font-size:11px;color:var(--mu);"></div>
-    <div class="frow"><label>Access token</label><input id="liveToken" placeholder="1000.xxxxxxxx..." style="font-family:'DM Mono',monospace;font-size:13px;"></div>
+    <div class="frow"><label>Scope needed</label><input readonly value="ZohoCRM.modules.deals.READ,ZohoCRM.modules.leads.READ,ZohoCRM.modules.contacts.READ" style="font-size:11px;color:var(--mu);"/></div>
+    <div class="frow"><label>Access token</label><input id="liveToken" placeholder="1000.xxxxxxxx..." style="font-family:'DM Mono',monospace;font-size:13px;"/></div>
     <div style="color:var(--rd);font-size:12px;min-height:16px;" id="liveErr"></div>
     <div class="mbtns"><button class="btn btn-muted" onclick="closeLiveOv()">Cancel</button><button class="btn btn-green" onclick="confirmLiveToken()">Load Live Data →</button></div>
   </div>
@@ -199,7 +201,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
     <div class="logo">W</div>
     <span class="title">Weekly CRM Report</span>
     <span class="badge saved" id="sb">Saved</span>
-    <span class="badge editor" id="mb" onclick="toggleMode()">Editor mode — lock ↗</span>
+    <span class="badge viewer" id="mb" onclick="toggleMode()">View only — unlock ↗</span>
   </div>
   <div class="tr">
     <!-- VIEW SWITCHER -->
@@ -207,96 +209,42 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
       <button class="wt active" id="tabManual" onclick="switchView('manual')">Weekly Report</button>
       <button class="wt" id="tabLive" onclick="switchView('live')">🔴 Live CRM</button>
     </div>
-    <div class="week-tabs" id="wTabs"><button class="wt">Feb 23</button><button class="wt">Feb 28</button><button class="wt">Mar 7</button><button class="wt">Mar 14</button><button class="wt">Mar 21</button><button class="wt">Mar 28</button><button class="wt">Apr 4</button><button class="wt active">Apr 18</button></div>
-    <button class="btn btn-green" id="addBtn" onclick="openAdd()" style="display: flex;">+ Add week</button>
+    <div class="week-tabs" id="wTabs"></div>
+    <button class="btn btn-green" id="addBtn" onclick="openAdd()" style="display:none;">+ Add week</button>
     <button class="btn btn-muted" onclick="exportData()" title="Save all your data to a backup file">⬇ Export</button>
     <button class="btn btn-blue" onclick="exportShareable()" title="Download a standalone HTML file with all data baked in — share with anyone!">📤 Share</button>
-    <label class="btn btn-muted" style="cursor:pointer;" title="Restore data from a backup file">⬆ Import<input type="file" accept=".json" onchange="importData(event)" style="display:none;"></label>
+    <label class="btn btn-muted" style="cursor:pointer;" title="Restore data from a backup file">⬆ Import<input type="file" accept=".json" onchange="importData(event)" style="display:none;"/></label>
     <button class="btn btn-blue" onclick="exportShareable()" title="Create a shareable HTML file with all data baked in">📤 Share</button>
   </div>
 </div>
 
 <!-- MAIN -->
 <div class="main">
-  <div class="vbar" id="vb" style="display: none;"><span>🔒 View-only mode — data is live</span><button class="ul" onclick="toggleMode()">Enter PIN to edit</button></div>
-  <div class="whdr" id="whdr">
-    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-      <div style="display:flex;flex-direction:column;gap:4px;">
-        <span style="font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:0.06em;">Week label</span>
-        <input class="wni" id="wni" value="Apr 18-Apr 24" onblur="swn()" onkeydown="if(event.key==='Enter')this.blur()" style="width:200px;">
-      </div>
-      <div style="display:flex;flex-direction:column;gap:4px;">
-        <span style="font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:0.06em;">Tab name</span>
-        <input class="wni" id="wnis" value="Apr 18" onblur="swn()" onkeydown="if(event.key==='Enter')this.blur()" style="width:100px;">
-      </div>
-    </div>
-    <button class="btn btn-red" onclick="dw()">Delete week</button></div>
+  <div class="vbar" id="vb"><span>🔒 View-only mode — data is live</span><button class="ul" onclick="toggleMode()">Enter PIN to edit</button></div>
+  <div class="whdr" id="whdr"></div>
 
   <!-- VOLUME -->
   <div class="sec">Volume overview</div>
-  <div class="mg" id="mg"><div class="mc bl">
-      <div class="mlb">Active projects</div>
-      <div class="mc-top">
-        <span class="mv" id="mv_7_active">0</span>
-        <span class="msb">Total <span class="mtr"><span class="dn">↓824</span></span> <span class="auto-sum-lbl">auto</span></span>
-      </div>
-      <div class="mc-breakdown"><div class="mc-pill"><span class="mc-pill-lbl">SFA</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_active_sfa">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">LR</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_active_lr">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Sunrun</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_active_sun">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Cash</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_active_cash">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Loan</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_active_loan">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Prepaid</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_active_prepaid">0</span></div></div></div><div class="mc am">
-      <div class="mlb">New sales</div>
-      <div class="mc-top">
-        <span class="mv" id="mv_7_newSales">0</span>
-        <span class="msb">Weekly <span class="mtr"><span class="dn">↓45</span></span> <span class="auto-sum-lbl">auto</span></span>
-      </div>
-      <div class="mc-breakdown"><div class="mc-pill"><span class="mc-pill-lbl">SFA</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_newSales_sfa">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">LR</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_newSales_lr">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Sunrun</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_newSales_sun">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Cash</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_newSales_cash">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Loan</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_newSales_loan">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Prepaid</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_newSales_prepaid">0</span></div></div></div><div class="mc gn">
-      <div class="mlb">Installs completed</div>
-      <div class="mc-top">
-        <span class="mv" id="mv_7_installs">0</span>
-        <span class="msb">Weekly <span class="mtr"><span class="dn">↓32</span></span> <span class="auto-sum-lbl">auto</span></span>
-      </div>
-      <div class="mc-breakdown"><div class="mc-pill"><span class="mc-pill-lbl">SFA</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_installs_sfa">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">LR</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_installs_lr">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Sunrun</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_installs_sun">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Cash</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_installs_cash">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Loan</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_installs_loan">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Prepaid</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_installs_prepaid">0</span></div></div></div><div class="mc tl">
-      <div class="mlb">PTOs achieved</div>
-      <div class="mc-top">
-        <span class="mv" id="mv_7_ptos">0</span>
-        <span class="msb">Weekly <span class="mtr"><span class="dn">↓27</span></span> <span class="auto-sum-lbl">auto</span></span>
-      </div>
-      <div class="mc-breakdown"><div class="mc-pill"><span class="mc-pill-lbl">SFA</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_ptos_sfa">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">LR</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_ptos_lr">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Sunrun</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_ptos_sun">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Cash</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_ptos_cash">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Loan</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_ptos_loan">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Prepaid</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_ptos_prepaid">0</span></div></div></div><div class="mc gn">
-      <div class="mlb">All-time closed</div>
-      <div class="mc-top">
-        <span class="mv" id="mv_7_closed">0</span>
-        <span class="msb">Cumulative <span class="mtr"><span class="dn">↓530</span></span> <span class="auto-sum-lbl">auto</span></span>
-      </div>
-      <div class="mc-breakdown"><div class="mc-pill"><span class="mc-pill-lbl">SFA</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_closed_sfa">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">LR</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_closed_lr">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Sunrun</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_closed_sun">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Cash</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_closed_cash">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Loan</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_closed_loan">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Prepaid</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_closed_prepaid">0</span></div></div></div><div class="mc rd">
-      <div class="mlb">All-time cancelled</div>
-      <div class="mc-top">
-        <span class="mv" id="mv_7_cancelled">0</span>
-        <span class="msb">Cumulative <span class="mtr"><span class="dn">↓230</span></span> <span class="auto-sum-lbl">auto</span></span>
-      </div>
-      <div class="mc-breakdown"><div class="mc-pill"><span class="mc-pill-lbl">SFA</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_cancelled_sfa">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">LR</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_cancelled_lr">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Sunrun</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_cancelled_sun">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Cash</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_cancelled_cash">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Loan</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_cancelled_loan">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Prepaid</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_cancelled_prepaid">0</span></div></div></div></div>
+  <div class="mg" id="mg"></div>
 
   <!-- SALES NOTES -->
-  <div class="sec">Sales notes — <span id="snlbl" style="text-transform:none;font-weight:500;color:var(--tx);">Apr 18-Apr 24</span></div>
+  <div class="sec">Sales notes — <span id="snlbl" style="text-transform:none;font-weight:500;color:var(--tx);"></span></div>
   <div class="notes-card">
     <div class="notes-grid" id="notesGrid">
-      <div class="note-block">
-        <div class="note-label">SFA Sales</div>
-        <div class="note-text ed-area" id="sfaNote" contenteditable="true">Click to add SFA sales notes...</div>
-      </div>
-      <div class="note-block">
-        <div class="note-label">Regular Sales</div>
-        <div class="note-text ed-area" id="regNote" contenteditable="true">Click to add Regular sales notes...</div>
-      </div></div>
+    </div>
   </div>
 
   <!-- TRENDS -->
   <div class="sec">6-week trends</div>
   <div class="cg">
-    <div class="card"><div class="ctitle">Active projects <span>all weeks</span></div><div class="cw" style="height:170px;"><canvas id="c_a" role="img" aria-label="Active projects" style="box-sizing: border-box; display: block; height: 170px; width: 609px;" width="609" height="170"></canvas></div></div>
-    <div class="card"><div class="ctitle">Installs &amp; PTOs <span>weekly</span></div><div class="cw" style="height:170px;"><canvas id="c_i" role="img" aria-label="Installs PTOs" style="box-sizing: border-box; display: block; height: 170px; width: 609px;" width="609" height="170"></canvas></div></div>
-    <div class="card"><div class="ctitle">New sales <span>weekly</span></div><div class="cw" style="height:170px;"><canvas id="c_s" role="img" aria-label="New sales" style="box-sizing: border-box; display: block; height: 170px; width: 609px;" width="609" height="170"></canvas></div></div>
-    <div class="card"><div class="ctitle">Total sale→PTO <span>days SFA</span></div><div class="cw" style="height:170px;"><canvas id="c_c" role="img" aria-label="Cycle time" style="box-sizing: border-box; display: block; height: 170px; width: 609px;" width="609" height="170"></canvas></div></div>
+    <div class="card"><div class="ctitle">Active projects <span>all weeks</span></div><div class="cw" style="height:170px;"><canvas id="c_a" role="img" aria-label="Active projects"></canvas></div></div>
+    <div class="card"><div class="ctitle">Installs & PTOs <span>weekly</span></div><div class="cw" style="height:170px;"><canvas id="c_i" role="img" aria-label="Installs PTOs"></canvas></div></div>
+    <div class="card"><div class="ctitle">New sales <span>weekly</span></div><div class="cw" style="height:170px;"><canvas id="c_s" role="img" aria-label="New sales"></canvas></div></div>
+    <div class="card"><div class="ctitle">Total sale→PTO <span>days SFA</span></div><div class="cw" style="height:170px;"><canvas id="c_c" role="img" aria-label="Cycle time"></canvas></div></div>
   </div>
 
   <!-- CYCLE TIMES -->
-  <div class="sec">Cycle times — <span id="cl" style="text-transform:none;font-weight:500;color:var(--tx);">Apr 18-Apr 24</span></div>
+  <div class="sec">Cycle times — <span id="cl" style="text-transform:none;font-weight:500;color:var(--tx);"></span></div>
   <div class="cg">
     <div class="card">
       <div class="ctitle">Stage cycle times <span>days per stage</span></div>
@@ -321,306 +269,30 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
             <th>Days</th><th style="color:var(--tl);">n</th>
           </tr>
         </thead>
-        <tbody id="ctBody"><tr>
-      <td>Sale→Survey</td>
-      <td><span class="ct-val ed" id="ctv7_0" contenteditable="true" style="color:var(--gn);">0</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_0" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clr7_0" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_0" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="csu7_0" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_0" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cca7_0" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_0" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clo7_0" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_0" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cpr7_0" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_0" contenteditable="true">0</span></td>
-    </tr><tr>
-      <td>Survey→Pipeline</td>
-      <td><span class="ct-val ed" id="ctv7_1" contenteditable="true" style="color:var(--gn);">0</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_1" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clr7_1" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_1" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="csu7_1" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_1" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cca7_1" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_1" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clo7_1" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_1" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cpr7_1" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_1" contenteditable="true">0</span></td>
-    </tr><tr>
-      <td>Pipeline→Permit</td>
-      <td><span class="ct-val ed" id="ctv7_2" contenteditable="true" style="color:var(--gn);">0</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_2" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clr7_2" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_2" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="csu7_2" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_2" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cca7_2" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_2" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clo7_2" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_2" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cpr7_2" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_2" contenteditable="true">0</span></td>
-    </tr><tr>
-      <td>Permit→Approval</td>
-      <td><span class="ct-val ed" id="ctv7_3" contenteditable="true" style="color:var(--gn);">0</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_3" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clr7_3" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_3" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="csu7_3" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_3" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cca7_3" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_3" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clo7_3" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_3" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cpr7_3" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_3" contenteditable="true">0</span></td>
-    </tr><tr>
-      <td>Approval→Install</td>
-      <td><span class="ct-val ed" id="ctv7_4" contenteditable="true" style="color:var(--gn);">0</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_4" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clr7_4" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_4" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="csu7_4" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_4" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cca7_4" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_4" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clo7_4" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_4" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cpr7_4" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_4" contenteditable="true">0</span></td>
-    </tr><tr>
-      <td>Install→Done</td>
-      <td><span class="ct-val ed" id="ctv7_5" contenteditable="true" style="color:var(--gn);">0</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_5" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clr7_5" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_5" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="csu7_5" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_5" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cca7_5" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_5" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clo7_5" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_5" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cpr7_5" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_5" contenteditable="true">0</span></td>
-    </tr><tr>
-      <td>Done→Inspect</td>
-      <td><span class="ct-val ed" id="ctv7_6" contenteditable="true" style="color:var(--gn);">0</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_6" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clr7_6" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_6" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="csu7_6" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_6" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cca7_6" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_6" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clo7_6" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_6" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cpr7_6" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_6" contenteditable="true">0</span></td>
-    </tr><tr>
-      <td>Inspect→PTO</td>
-      <td><span class="ct-val ed" id="ctv7_7" contenteditable="true" style="color:var(--gn);">0</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_7" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clr7_7" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_7" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="csu7_7" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_7" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cca7_7" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_7" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clo7_7" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_7" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cpr7_7" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_7" contenteditable="true">0</span></td>
-    </tr><tr>
-      <td>PTO→Approve</td>
-      <td><span class="ct-val ed" id="ctv7_8" contenteditable="true" style="color:var(--gn);">0</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_8" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clr7_8" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_8" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="csu7_8" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_8" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cca7_8" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_8" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="clo7_8" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_8" contenteditable="true">0</span></td>
-      <td><span class="ct-val ed" id="cpr7_8" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_8" contenteditable="true">0</span></td>
-    </tr></tbody>
+        <tbody id="ctBody"></tbody>
       </table></div>
     </div>
-    <div class="card"><div class="ctitle">Permit→approval trend <span>all weeks</span></div><div class="cw" style="height:255px;"><canvas id="c_pm2" role="img" aria-label="Permit trend" style="box-sizing: border-box; display: block; height: 255px; width: 518px;" width="518" height="255"></canvas></div></div>
+    <div class="card"><div class="ctitle">Permit→approval trend <span>all weeks</span></div><div class="cw" style="height:255px;"><canvas id="c_pm2" role="img" aria-label="Permit trend"></canvas></div></div>
   </div>
 
   <!-- PENDING -->
-  <div class="sec">Pending projects — <span id="pl" style="text-transform:none;font-weight:500;color:var(--tx);">Apr 18-Apr 24</span></div>
-  <div class="card full"><div class="ctitle">Projects exceeding stage thresholds</div><div style="overflow-x:auto;"><table class="pt"><thead><tr><th>Stage</th><th>Threshold</th><th style="text-align:right;">SFA</th><th style="text-align:right;">LR</th><th style="text-align:right;">Sunrun</th><th style="text-align:right;">Cash</th><th style="text-align:right;">Loan</th><th style="text-align:right;">Prepaid</th><th style="text-align:right;">Total</th></tr></thead><tbody id="ptb"><tr>
-      <td>Sale→Survey</td>
-      <td style="color:var(--mu);">&gt;10d</td>
-      <td class="nm ct-zero ed" style="text-align:right;" id="ps7_0" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plr7_0" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="psu7_0" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_0" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_0" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_0" contenteditable="true">—</td>
-      <td class="nm" style="text-align:right;color:#34d399;font-weight:600;" id="pt7_0">0</td></tr><tr>
-      <td>Survey→Pipeline</td>
-      <td style="color:var(--mu);">&gt;5d</td>
-      <td class="nm ct-zero ed" style="text-align:right;" id="ps7_1" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plr7_1" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="psu7_1" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_1" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_1" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_1" contenteditable="true">—</td>
-      <td class="nm" style="text-align:right;color:#34d399;font-weight:600;" id="pt7_1">0</td></tr><tr>
-      <td>Pipeline→Permit</td>
-      <td style="color:var(--mu);">&gt;10d</td>
-      <td class="nm ct-zero ed" style="text-align:right;" id="ps7_2" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plr7_2" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="psu7_2" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_2" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_2" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_2" contenteditable="true">—</td>
-      <td class="nm" style="text-align:right;color:#34d399;font-weight:600;" id="pt7_2">0</td></tr><tr>
-      <td>Permit→Approval</td>
-      <td style="color:var(--mu);">&gt;21d</td>
-      <td class="nm ct-zero ed" style="text-align:right;" id="ps7_3" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plr7_3" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="psu7_3" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_3" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_3" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_3" contenteditable="true">—</td>
-      <td class="nm" style="text-align:right;color:#34d399;font-weight:600;" id="pt7_3">0</td></tr><tr>
-      <td>Approval→Install</td>
-      <td style="color:var(--mu);">&gt;5d</td>
-      <td class="nm ct-zero ed" style="text-align:right;" id="ps7_4" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plr7_4" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="psu7_4" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_4" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_4" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_4" contenteditable="true">—</td>
-      <td class="nm" style="text-align:right;color:#34d399;font-weight:600;" id="pt7_4">0</td></tr><tr>
-      <td>Install progress</td>
-      <td style="color:var(--mu);">&gt;5d</td>
-      <td class="nm ct-zero ed" style="text-align:right;" id="ps7_5" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plr7_5" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="psu7_5" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_5" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_5" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_5" contenteditable="true">—</td>
-      <td class="nm" style="text-align:right;color:#34d399;font-weight:600;" id="pt7_5">0</td></tr><tr>
-      <td>Done→Inspect</td>
-      <td style="color:var(--mu);">&gt;5d</td>
-      <td class="nm ct-zero ed" style="text-align:right;" id="ps7_6" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plr7_6" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="psu7_6" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_6" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_6" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_6" contenteditable="true">—</td>
-      <td class="nm" style="text-align:right;color:#34d399;font-weight:600;" id="pt7_6">0</td></tr><tr>
-      <td>Inspect→PTO</td>
-      <td style="color:var(--mu);">&gt;5d</td>
-      <td class="nm ct-zero ed" style="text-align:right;" id="ps7_7" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plr7_7" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="psu7_7" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_7" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_7" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_7" contenteditable="true">—</td>
-      <td class="nm" style="text-align:right;color:#34d399;font-weight:600;" id="pt7_7">0</td></tr><tr>
-      <td>PTO→Approve</td>
-      <td style="color:var(--mu);">&gt;10d</td>
-      <td class="nm ct-zero ed" style="text-align:right;" id="ps7_8" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plr7_8" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="psu7_8" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_8" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_8" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_8" contenteditable="true">—</td>
-      <td class="nm" style="text-align:right;color:#34d399;font-weight:600;" id="pt7_8">0</td></tr><tr style="background:rgba(248,113,113,0.04);">
-      <td style="font-weight:600;">Total &gt;90d</td>
-      <td style="color:var(--mu);">&gt;90d</td>
-      <td class="nm ct-zero ed" style="text-align:right;" id="ps7_9" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plr7_9" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="psu7_9" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_9" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_9" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_9" contenteditable="true">—</td>
-      <td class="nm" style="text-align:right;color:#34d399;font-weight:600;" id="pt7_9">0</td></tr></tbody></table></div></div>
+  <div class="sec">Pending projects — <span id="pl" style="text-transform:none;font-weight:500;color:var(--tx);"></span></div>
+  <div class="card full"><div class="ctitle">Projects exceeding stage thresholds</div><div style="overflow-x:auto;"><table class="pt"><thead><tr><th>Stage</th><th>Threshold</th><th style="text-align:right;">SFA</th><th style="text-align:right;">LR</th><th style="text-align:right;">Sunrun</th><th style="text-align:right;">Cash</th><th style="text-align:right;">Loan</th><th style="text-align:right;">Prepaid</th><th style="text-align:right;">Total</th></tr></thead><tbody id="ptb"></tbody></table></div></div>
 
   <!-- RISK -->
-  <div class="sec">Operational risk — <span id="rl" style="text-transform:none;font-weight:500;color:var(--tx);">Apr 18-Apr 24</span></div>
+  <div class="sec">Operational risk — <span id="rl" style="text-transform:none;font-weight:500;color:var(--tx);"></span></div>
   <div class="cg">
-    <div class="card full"><div class="ctitle">Risk indicators <span id="rh">enter fractions below</span></div><div class="rl" id="rlist"><div class="risk-section"><div class="risk-group-title">Weekly correction rates</div><div style="padding:8px 0;border-bottom:1px solid var(--bd);">
-      <div style="font-size:15px;font-weight:500;color:var(--tx);margin-bottom:8px;">Permit correction</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <div class="risk-dual-cell">
-          <span class="risk-dual-tag sfa">SFA</span>
-          <div class="risk-dual-vals">
-            <span class="risk-frac"><span class="rnum ed" id="rs7_pcSfaN" contenteditable="true">0</span><span class="rsep">/</span><span class="rden ed" id="rs7_pcSfaD" contenteditable="true">0</span></span>
-            <div class="risk-pct-col"><span class="bg bgm">—</span></div>
-          </div>
-        </div>
-        <div class="risk-dual-cell">
-          <span class="risk-dual-tag reg">REG</span>
-          <div class="risk-dual-vals">
-            <span class="risk-frac"><span class="rnum ed" id="rr7_pcRegN" contenteditable="true">0</span><span class="rsep">/</span><span class="rden ed" id="rr7_pcRegD" contenteditable="true">0</span></span>
-            <div class="risk-pct-col"><span class="bg bgm">—</span></div>
-          </div>
-        </div>
-      </div>
-    </div><div style="padding:8px 0;border-bottom:1px solid var(--bd);">
-      <div style="font-size:15px;font-weight:500;color:var(--tx);margin-bottom:8px;">IPA Part 1 correction</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <div class="risk-dual-cell">
-          <span class="risk-dual-tag sfa">SFA</span>
-          <div class="risk-dual-vals">
-            <span class="risk-frac"><span class="rnum ed" id="rs7_i1SfaN" contenteditable="true">0</span><span class="rsep">/</span><span class="rden ed" id="rs7_i1SfaD" contenteditable="true">0</span></span>
-            <div class="risk-pct-col"><span class="bg bgm">—</span></div>
-          </div>
-        </div>
-        <div class="risk-dual-cell">
-          <span class="risk-dual-tag reg">REG</span>
-          <div class="risk-dual-vals">
-            <span class="risk-frac"><span class="rnum ed" id="rr7_i1RegN" contenteditable="true">0</span><span class="rsep">/</span><span class="rden ed" id="rr7_i1RegD" contenteditable="true">0</span></span>
-            <div class="risk-pct-col"><span class="bg bgm">—</span></div>
-          </div>
-        </div>
-      </div>
-    </div><div style="padding:8px 0;border-bottom:1px solid var(--bd);">
-      <div style="font-size:15px;font-weight:500;color:var(--tx);margin-bottom:8px;">IPA Part 2 correction</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <div class="risk-dual-cell">
-          <span class="risk-dual-tag sfa">SFA</span>
-          <div class="risk-dual-vals">
-            <span class="risk-frac"><span class="rnum ed" id="rs7_i2SfaN" contenteditable="true">0</span><span class="rsep">/</span><span class="rden ed" id="rs7_i2SfaD" contenteditable="true">0</span></span>
-            <div class="risk-pct-col"><span class="bg bgm">—</span></div>
-          </div>
-        </div>
-        <div class="risk-dual-cell">
-          <span class="risk-dual-tag reg">REG</span>
-          <div class="risk-dual-vals">
-            <span class="risk-frac"><span class="rnum ed" id="rr7_i2RegN" contenteditable="true">0</span><span class="rsep">/</span><span class="rden ed" id="rr7_i2RegD" contenteditable="true">0</span></span>
-            <div class="risk-pct-col"><span class="bg bgm">—</span></div>
-          </div>
-        </div>
-      </div>
-    </div><div class="risk-group-title" style="margin-top:8px;">Monthly rates (MTD)</div><div style="padding:8px 0;border-bottom:1px solid var(--bd);">
-      <div style="font-size:15px;font-weight:500;color:var(--tx);margin-bottom:8px;">Reinspection (MTD)</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <div class="risk-dual-cell">
-          <span class="risk-dual-tag sfa">SFA</span>
-          <div class="risk-dual-vals">
-            <span class="risk-frac"><span class="rnum ed" id="rs7_riSfaN" contenteditable="true">0</span><span class="rsep">/</span><span class="rden ed" id="rs7_riSfaD" contenteditable="true">0</span></span>
-            <div class="risk-pct-col"><span class="bg bgm">—</span></div>
-          </div>
-        </div>
-        <div class="risk-dual-cell">
-          <span class="risk-dual-tag reg">REG</span>
-          <div class="risk-dual-vals">
-            <span class="risk-frac"><span class="rnum ed" id="rr7_riRegN" contenteditable="true">0</span><span class="rsep">/</span><span class="rden ed" id="rr7_riRegD" contenteditable="true">0</span></span>
-            <div class="risk-pct-col"><span class="bg bgm">—</span></div>
-          </div>
-        </div>
-      </div>
-      
-    </div><div style="padding:8px 0;border-bottom:1px solid var(--bd);">
-      <div style="font-size:15px;font-weight:500;color:var(--tx);margin-bottom:8px;">PTO rejection (MTD)</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <div class="risk-dual-cell">
-          <span class="risk-dual-tag sfa">SFA</span>
-          <div class="risk-dual-vals">
-            <span class="risk-frac"><span class="rnum ed" id="rs7_prSfaN" contenteditable="true">0</span><span class="rsep">/</span><span class="rden ed" id="rs7_prSfaD" contenteditable="true">0</span></span>
-            <div class="risk-pct-col"><span class="bg bgm">—</span></div>
-          </div>
-        </div>
-        <div class="risk-dual-cell">
-          <span class="risk-dual-tag reg">REG</span>
-          <div class="risk-dual-vals">
-            <span class="risk-frac"><span class="rnum ed" id="rr7_prRegN" contenteditable="true">0</span><span class="rsep">/</span><span class="rden ed" id="rr7_prRegD" contenteditable="true">0</span></span>
-            <div class="risk-pct-col"><span class="bg bgm">—</span></div>
-          </div>
-        </div>
-      </div>
-      
-    </div></div></div></div>
+    <div class="card full"><div class="ctitle">Risk indicators <span id="rh"></span></div><div class="rl" id="rlist"></div></div>
   </div>
 
   <!-- PM -->
-  <div class="sec">Project managers — <span id="pml" style="text-transform:none;font-weight:500;color:var(--tx);">Apr 18-Apr 24</span></div>
+  <div class="sec">Project managers — <span id="pml" style="text-transform:none;font-weight:500;color:var(--tx);"></span></div>
   <div class="cg">
     <div class="card full">
-      <div class="ctitle">Scorecard <span id="ph">click to edit</span></div>
-      <div style="overflow-x:auto;"><table class="pmt"><thead><tr><th>Manager</th><th style="text-align:right;">Active</th><th style="text-align:right;">Won</th><th style="text-align:right;">Lost</th><th style="text-align:right;">On Hold</th><th style="text-align:right;">Total</th><th id="pmDelHdr"></th></tr></thead><tbody id="pmtb"><tr><td><div style="font-size:15px;font-weight:500;">Mary Ann Sante</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
-        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_0" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_0" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_0" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_0" contenteditable="true">0</td>
-        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_0">0</td>
-        <td><button class="btn btn-red btn-sm" onclick="delPM(7,0)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Genneva Arguelles</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
-        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_1" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_1" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_1" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_1" contenteditable="true">5</td>
-        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_1">5</td>
-        <td><button class="btn btn-red btn-sm" onclick="delPM(7,1)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Marielle Morla</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
-        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_2" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_2" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_2" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_2" contenteditable="true">1</td>
-        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_2">1</td>
-        <td><button class="btn btn-red btn-sm" onclick="delPM(7,2)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Allaiza Velasquez</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
-        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_3" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_3" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_3" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_3" contenteditable="true">6</td>
-        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_3">6</td>
-        <td><button class="btn btn-red btn-sm" onclick="delPM(7,3)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Francheska Alvarez</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
-        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_4" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_4" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_4" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_4" contenteditable="true">3</td>
-        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_4">3</td>
-        <td><button class="btn btn-red btn-sm" onclick="delPM(7,4)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Angelica Capili</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
-        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_5" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_5" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_5" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_5" contenteditable="true">3</td>
-        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_5">3</td>
-        <td><button class="btn btn-red btn-sm" onclick="delPM(7,5)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">May Contestable</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
-        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_6" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_6" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_6" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_6" contenteditable="true">3</td>
-        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_6">3</td>
-        <td><button class="btn btn-red btn-sm" onclick="delPM(7,6)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Liza Cequena</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
-        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_7" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_7" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_7" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_7" contenteditable="true">3</td>
-        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_7">3</td>
-        <td><button class="btn btn-red btn-sm" onclick="delPM(7,7)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Dane Fullos</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
-        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_8" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_8" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_8" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_8" contenteditable="true">0</td>
-        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_8">0</td>
-        <td><button class="btn btn-red btn-sm" onclick="delPM(7,8)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Ara Pascual</div><div style="font-size:13px;color:var(--mu);">REG</div></td>
-        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_9" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_9" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_9" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_9" contenteditable="true">1</td>
-        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_9">1</td>
-        <td><button class="btn btn-red btn-sm" onclick="delPM(7,9)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Dianne Orias</div><div style="font-size:13px;color:var(--mu);">REG</div></td>
-        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_10" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_10" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_10" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_10" contenteditable="true">1</td>
-        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_10">1</td>
-        <td><button class="btn btn-red btn-sm" onclick="delPM(7,10)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Lester Belarmino</div><div style="font-size:13px;color:var(--mu);">REG</div></td>
-        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_11" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_11" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_11" contenteditable="true">0</td>
-        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_11" contenteditable="true">4</td>
-        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_11">4</td>
-        <td><button class="btn btn-red btn-sm" onclick="delPM(7,11)">✕</button></td></tr></tbody></table></div>
-      <div class="pm-add-row" id="pmAddRow" style="display: flex;">
-        <input id="pmNewName" placeholder="Manager name">
+      <div class="ctitle">Scorecard <span id="ph"></span></div>
+      <div style="overflow-x:auto;"><table class="pmt"><thead><tr><th>Manager</th><th style="text-align:right;">Active</th><th style="text-align:right;">Won</th><th style="text-align:right;">Lost</th><th style="text-align:right;">On Hold</th><th style="text-align:right;">Total</th><th id="pmDelHdr"></th></tr></thead><tbody id="pmtb"></tbody></table></div>
+      <div class="pm-add-row" id="pmAddRow" style="display:none;">
+        <input id="pmNewName" placeholder="Manager name"/>
         <select id="pmNewType"><option value="SFA">SFA</option><option value="REG">REG</option></select>
         <button class="btn btn-green btn-sm" onclick="addPM()">+ Add</button>
       </div>
@@ -740,7 +412,7 @@ function pct(n,d){return(n!=null&&d!=null&&d>0)?Math.round(n/d*100):null;}
 function bgc(v){return v==null?'bgm':v>=70?'bgr':v>=20?'bga':'bgg';}
 function sv(){clearTimeout(st);st=setTimeout(()=>{try{localStorage.setItem('crm6',JSON.stringify({w:W,p:pin}));}catch(e){}setSv('saved');},700);setSv('saving');}
 function setSv(s){const e=document.getElementById('sb');e.textContent=s==='saving'?'Saving...':'Saved';e.className='badge '+s;}
-function ld(){try{const d=localStorage.getItem('crm6');if(d){const x=JSON.parse(d);if(x.w&&x.w.length>=W.length){W=x.w;}if(x.p)pin=x.p;}}catch(e){}}if(x.p)pin=x.p;}}catch(e){}}
+function ld(){try{const d=localStorage.getItem('crm6');if(d){const x=JSON.parse(d);if(x.w&&x.w.length>=W.length){W=x.w;}if(x.p)pin=x.p;}}catch(e){}}
 
 // PIN
 function ud(){for(let i=0;i<4;i++)document.getElementById('d'+i).className='dot'+(i<pb.length?' on':'');}
@@ -1345,6 +1017,5 @@ function renderLive(deals){
 }
 
 </script>
-
-
-<scribe-shadow id="crxjs-ext" data-crx="okfkdaglfjjjfefdcppliegebpoegaii" style="position: fixed; width: 0px; height: 0px; top: 0px; left: 0px; z-index: 2147483647; overflow: visible; visibility: visible;"></scribe-shadow></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
+</body>
+</html>
