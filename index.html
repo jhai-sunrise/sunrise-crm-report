@@ -141,7 +141,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 @media(max-width:900px){.mg{grid-template-columns:repeat(3,1fr);}.notes-grid{grid-template-columns:1fr;}}
 @media(max-width:640px){.cg{grid-template-columns:1fr;}.card.full{grid-column:1;}.mg{grid-template-columns:repeat(2,1fr);}.main{padding:1rem;}.fgrid{grid-template-columns:1fr;}}
 </style>
-<style></style></head>
+<style></style><style></style></head>
 <body data-new-gr-c-s-check-loaded="14.1288.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1288.0">
 
 <!-- PIN MODAL -->
@@ -181,17 +181,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
   </div>
 </div>
 
-<!-- LIVE CRM TOKEN MODAL -->
-<div class="overlay" id="liveOv">
-  <div class="modal">
-    <h3>Connect Live CRM</h3>
-    <p>Paste your Zoho access token to load live data. Tokens expire after 1 hour.</p>
-    <div class="frow"><label>Scope needed</label><input readonly="" value="ZohoCRM.modules.deals.READ,ZohoCRM.modules.leads.READ,ZohoCRM.modules.contacts.READ" style="font-size:11px;color:var(--mu);"></div>
-    <div class="frow"><label>Access token</label><input id="liveToken" placeholder="1000.xxxxxxxx..." style="font-family:'DM Mono',monospace;font-size:13px;"></div>
-    <div style="color:var(--rd);font-size:12px;min-height:16px;" id="liveErr"></div>
-    <div class="mbtns"><button class="btn btn-muted" onclick="closeLiveOv()">Cancel</button><button class="btn btn-green" onclick="confirmLiveToken()">Load Live Data →</button></div>
-  </div>
-</div>
+
 
 <!-- TOPBAR -->
 <div class="topbar">
@@ -205,14 +195,14 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
     <!-- VIEW SWITCHER -->
     <div style="display:flex;gap:3px;background:var(--sf2);border-radius:7px;padding:3px;">
       <button class="wt active" id="tabManual" onclick="switchView('manual')">Weekly Report</button>
-      <button class="wt" id="tabLive" onclick="switchView('live')">🔴 Live CRM</button>
+      
     </div>
     <div class="week-tabs" id="wTabs"><button class="wt">Feb 23</button><button class="wt">Feb 28</button><button class="wt">Mar 7</button><button class="wt">Mar 14</button><button class="wt">Mar 21</button><button class="wt">Mar 28</button><button class="wt">Apr 4</button><button class="wt active">Apr 18</button></div>
     <button class="btn btn-green" id="addBtn" onclick="openAdd()" style="display: flex;">+ Add week</button>
     <button class="btn btn-muted" onclick="exportData()" title="Save all your data to a backup file">⬇ Export</button>
     <button class="btn btn-blue" onclick="exportShareable()" title="Download a standalone HTML file with all data baked in — share with anyone!">📤 Share</button>
     <label class="btn btn-muted" style="cursor:pointer;" title="Restore data from a backup file">⬆ Import<input type="file" accept=".json" onchange="importData(event)" style="display:none;"></label>
-    <button class="btn btn-blue" onclick="exportShareable()" title="Create a shareable HTML file with all data baked in">📤 Share</button>
+    
   </div>
 </div>
 
@@ -637,13 +627,7 @@ Total: 5 Sale</div>
 </div>
 
 <!-- LIVE CRM VIEW -->
-<div id="liveView" style="display:none;">
-  <div class="main">
-    <div id="liveLoading" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:16px;">
-      <div style="width:36px;height:36px;border:3px solid var(--bd2);border-top-color:var(--gn);border-radius:50%;animation:spin2 0.8s linear infinite;"></div>
-      <p style="font-size:14px;color:var(--mu);" id="liveLdTxt">Fetching live data from Zoho CRM...</p>
-    </div>
-    <div id="liveErr2" style="display:none;background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.2);border-radius:12px;padding:1.5rem;margin:2rem 0;text-align:center;">
+<div id="liveErr2" style="display:none;background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.2);border-radius:12px;padding:1.5rem;margin:2rem 0;text-align:center;">
       <p style="color:var(--rd);font-size:14px;" id="liveErrMsg">Failed to load.</p>
       <p style="font-size:12px;color:var(--mu);margin-top:6px;">Token may have expired. <button class="ul" onclick="openLiveOv()">Enter a new token</button></p>
     </div>
@@ -1169,25 +1153,22 @@ function exportData(){
   URL.revokeObjectURL(a.href);
 }
 function exportShareable(){
-  const src=document.documentElement.outerHTML;
   const dataJson=JSON.stringify(W);
   const pinJson=JSON.stringify(pin);
-  // Bake current W data directly in, bypassing SEED and localStorage
-  let out=src.replace(
-    /let W=JSON\.parse\(JSON\.stringify\(SEED\)\),cw=\d+,/,
-    `let W=${dataJson},cw=${W.length-1},`
-  );
-  // Replace ld() so it doesn't overwrite with empty localStorage on other browsers
-  out=out.replace(
-    /function ld\(\)\{[^}]+\}/,
-    `function ld(){try{const d=localStorage.getItem('crm6');if(d){const x=JSON.parse(d);if(x.w&&x.w.length>=W.length){W=x.w;}if(x.p)pin=x.p;}}catch(e){}}`
-  );
-  // Set pin
-  out=out.replace('ld();\nif(pin)', `pin=${pinJson};\nif(pin)`);
+  const cwVal=W.length-1;
+  let out=document.documentElement.outerHTML;
+  const wStart=out.indexOf('let W=');
+  let depth=0,i=wStart+6;
+  while(i<out.length){if(out[i]==='[')depth++;else if(out[i]===']'){depth--;if(depth===0){i++;break;}}i++;}
+  const cwMatch=out.indexOf(',cw=',i);
+  const afterCw=out.indexOf(',',cwMatch+4)+1;
+  out=out.slice(0,wStart)+'let W='+dataJson+',cw='+cwVal+','+out.slice(afterCw);
+  out=out.replace(/function ld\(\)\{[^\n]+\}/,'function ld(){try{const d=localStorage.getItem(\'crm6\');if(d){const x=JSON.parse(d);if(x.w&&x.w.length>=W.length){W=x.w;}if(x.p)pin=x.p;}}catch(e){}}');
+  out=out.replace(/pin=[^;]+;\nif\(pin\)/,'pin='+pinJson+';\nif(pin)');
   const blob=new Blob([out],{type:'text/html'});
   const a=document.createElement('a');
   a.href=URL.createObjectURL(blob);
-  a.download=`CRM_Report_Sunrise_${new Date().toISOString().slice(0,10)}.html`;
+  a.download='CRM_Report_Sunrise_'+new Date().toISOString().slice(0,10)+'.html';
   a.click();
   URL.revokeObjectURL(a.href);
 }
@@ -1213,45 +1194,10 @@ function importData(e){
 // ── VIEW SWITCHING ──
 let currentView='manual', LIVE_TOKEN='', liveCI={};
 
-function switchView(v){
-  currentView=v;
-  document.getElementById('tabManual').classList.toggle('active',v==='manual');
-  document.getElementById('tabLive').classList.toggle('active',v==='live');
-  document.querySelector('.main').style.display=v==='manual'?'block':'none';
-  document.getElementById('liveView').style.display=v==='live'?'block':'none';
-  document.getElementById('wTabs').style.display=v==='manual'?'flex':'none';
-  document.getElementById('addBtn').style.display=v==='manual'&&isEd?'flex':'none';
-  document.getElementById('vb').style.display=v==='manual'&&!isEd?'flex':'none';
-  document.getElementById('mb').style.display=v==='manual'?'inline-flex':'none';
-  document.getElementById('sb').style.display=v==='manual'?'inline-flex':'none';
-  if(v==='live'){if(!LIVE_TOKEN){openLiveOv();}else{loadLiveData();}}
-}
+
 
 function openLiveOv(){document.getElementById('liveOv').classList.add('open');}
-function closeLiveOv(){document.getElementById('liveOv').classList.remove('open');}
-function confirmLiveToken(){
-  const t=document.getElementById('liveToken').value.trim();
-  if(!t||t.length<20){document.getElementById('liveErr').textContent='Please enter a valid token.';return;}
-  LIVE_TOKEN=t;closeLiveOv();loadLiveData();
-}
 
-// ── LIVE DATA FETCHING ──
-const FINANCER_KEYS=['SFA','LR','Sunrun','Cash','Loan','Prepaid','ILSFA'];
-const FINANCER_COLORS={'SFA':'var(--ac)','LR':'var(--gn)','Sunrun':'var(--tl)','Cash':'var(--am)','Loan':'var(--pu)','Prepaid':'#fb923c','ILSFA':'#e879f9'};
-const WON_STAGES=['PTO Approved','Closed Won','Invoiced','Activated','P2 Approved'];
-const LOST_STAGES=['Closed Lost','Cancelled','Disqualified'];
-
-function detectFin(deal){
-  const f=(deal.Financers||'').toLowerCase().trim();
-  if(!f)return'SFA';
-  if(f.includes('lightreach')||f==='lr')return'LR';
-  if(f.includes('sunrun'))return'Sunrun';
-  if(f.includes('cash'))return'Cash';
-  if(f.includes('loan'))return'Loan';
-  if(f.includes('prepaid'))return'Prepaid';
-  if(f.includes('ilsfa'))return'ILSFA';
-  return'SFA';
-}
 function liveIsWon(d){const s=d.Stage||'';return WON_STAGES.some(x=>s.includes(x));}
 function liveIsLost(d){const s=d.Stage||'';return LOST_STAGES.some(x=>s.includes(x));}
 function liveIsActive(d){return!liveIsWon(d)&&!liveIsLost(d);}
@@ -1355,4 +1301,5 @@ function renderLive(deals){
 </script>
 
 
-<scribe-shadow id="crxjs-ext" data-crx="okfkdaglfjjjfefdcppliegebpoegaii" style="position: fixed; width: 0px; height: 0px; top: 0px; left: 0px; z-index: 2147483647; overflow: visible; visibility: visible;"></scribe-shadow></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+<scribe-shadow id="crxjs-ext" data-crx="okfkdaglfjjjfefdcppliegebpoegaii" style="position: fixed; width: 0px; height: 0px; top: 0px; left: 0px; z-index: 2147483647; overflow: visible; visibility: visible;"></scribe-shadow></body></html>
