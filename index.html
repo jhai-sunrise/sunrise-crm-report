@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Weekly CRM Report</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
 :root{--bg:#1e2232;--sf:#262d3f;--sf2:#2e3650;--bd:rgba(255,255,255,0.09);--bd2:rgba(255,255,255,0.15);--tx:#f4f6fa;--mu:#9ba3ba;--ac:#4f8ef7;--gn:#34d399;--am:#fbbf24;--rd:#f87171;--tl:#2dd4bf;--pu:#a78bfa;}
@@ -143,14 +141,14 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 @media(max-width:900px){.mg{grid-template-columns:repeat(3,1fr);}.notes-grid{grid-template-columns:1fr;}}
 @media(max-width:640px){.cg{grid-template-columns:1fr;}.card.full{grid-column:1;}.mg{grid-template-columns:repeat(2,1fr);}.main{padding:1rem;}.fgrid{grid-template-columns:1fr;}}
 </style>
-</head>
-<body>
+<style></style></head>
+<body data-new-gr-c-s-check-loaded="14.1288.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1288.0">
 
 <!-- PIN MODAL -->
 <div class="overlay" id="pinOv">
   <div class="modal">
-    <h3 id="ptitle">Set your editor PIN</h3>
-    <p id="pdesc">Choose a 4-digit PIN. Share this dashboard — only you can edit with it.</p>
+    <h3 id="ptitle">Enter your PIN</h3>
+    <p id="pdesc">Enter PIN to edit, or continue as viewer.</p>
     <div class="pin-dots"><div class="dot" id="d0"></div><div class="dot" id="d1"></div><div class="dot" id="d2"></div><div class="dot" id="d3"></div></div>
     <div class="perr" id="perr"></div>
     <div class="keypad">
@@ -167,18 +165,18 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 <div class="overlay" id="addOv">
   <div class="modal">
     <h3>Add new week</h3><p>Fill in the key numbers — you can edit everything else after.</p>
-    <div class="frow"><label>Week label</label><input id="mL" placeholder="Apr 4–Apr 10, 26"/></div>
-    <div class="frow"><label>Short name (tab)</label><input id="mS" placeholder="Apr 4"/></div>
+    <div class="frow"><label>Week label</label><input id="mL" placeholder="Apr 4–Apr 10, 26"></div>
+    <div class="frow"><label>Short name (tab)</label><input id="mS" placeholder="Apr 4"></div>
     <div class="frow"><label>Key metrics</label><div class="fgrid">
-      <input id="mA" placeholder="Active projects" type="number"/>
-      <input id="mNS" placeholder="New sales" type="number"/>
-      <input id="mI" placeholder="Installs" type="number"/>
-      <input id="mP" placeholder="PTOs" type="number"/>
-      <input id="mC" placeholder="All-time closed" type="number"/>
-      <input id="mCn" placeholder="All-time cancelled" type="number"/>
+      <input id="mA" placeholder="Active projects" type="number">
+      <input id="mNS" placeholder="New sales" type="number">
+      <input id="mI" placeholder="Installs" type="number">
+      <input id="mP" placeholder="PTOs" type="number">
+      <input id="mC" placeholder="All-time closed" type="number">
+      <input id="mCn" placeholder="All-time cancelled" type="number">
     </div></div>
-    <div class="frow"><label>Total Sale→PTO (days)</label><input id="mCy" placeholder="e.g. 280" type="number"/></div>
-    <div class="frow"><label>Permit→Approval (days)</label><input id="mPm" placeholder="e.g. 45" type="number"/></div>
+    <div class="frow"><label>Total Sale→PTO (days)</label><input id="mCy" placeholder="e.g. 280" type="number"></div>
+    <div class="frow"><label>Permit→Approval (days)</label><input id="mPm" placeholder="e.g. 45" type="number"></div>
     <div class="mbtns"><button class="btn btn-muted" onclick="closeAdd()">Cancel</button><button class="btn btn-blue" onclick="confirmAdd()">Add week</button></div>
   </div>
 </div>
@@ -188,8 +186,8 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
   <div class="modal">
     <h3>Connect Live CRM</h3>
     <p>Paste your Zoho access token to load live data. Tokens expire after 1 hour.</p>
-    <div class="frow"><label>Scope needed</label><input readonly value="ZohoCRM.modules.deals.READ,ZohoCRM.modules.leads.READ,ZohoCRM.modules.contacts.READ" style="font-size:11px;color:var(--mu);"/></div>
-    <div class="frow"><label>Access token</label><input id="liveToken" placeholder="1000.xxxxxxxx..." style="font-family:'DM Mono',monospace;font-size:13px;"/></div>
+    <div class="frow"><label>Scope needed</label><input readonly="" value="ZohoCRM.modules.deals.READ,ZohoCRM.modules.leads.READ,ZohoCRM.modules.contacts.READ" style="font-size:11px;color:var(--mu);"></div>
+    <div class="frow"><label>Access token</label><input id="liveToken" placeholder="1000.xxxxxxxx..." style="font-family:'DM Mono',monospace;font-size:13px;"></div>
     <div style="color:var(--rd);font-size:12px;min-height:16px;" id="liveErr"></div>
     <div class="mbtns"><button class="btn btn-muted" onclick="closeLiveOv()">Cancel</button><button class="btn btn-green" onclick="confirmLiveToken()">Load Live Data →</button></div>
   </div>
@@ -201,7 +199,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
     <div class="logo">W</div>
     <span class="title">Weekly CRM Report</span>
     <span class="badge saved" id="sb">Saved</span>
-    <span class="badge viewer" id="mb" onclick="toggleMode()">View only — unlock ↗</span>
+    <span class="badge editor" id="mb" onclick="toggleMode()">Editor mode — lock ↗</span>
   </div>
   <div class="tr">
     <!-- VIEW SWITCHER -->
@@ -209,42 +207,101 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
       <button class="wt active" id="tabManual" onclick="switchView('manual')">Weekly Report</button>
       <button class="wt" id="tabLive" onclick="switchView('live')">🔴 Live CRM</button>
     </div>
-    <div class="week-tabs" id="wTabs"></div>
-    <button class="btn btn-green" id="addBtn" onclick="openAdd()" style="display:none;">+ Add week</button>
+    <div class="week-tabs" id="wTabs"><button class="wt">Feb 23</button><button class="wt">Feb 28</button><button class="wt">Mar 7</button><button class="wt">Mar 14</button><button class="wt">Mar 21</button><button class="wt">Mar 28</button><button class="wt">Apr 4</button><button class="wt active">Apr 18</button></div>
+    <button class="btn btn-green" id="addBtn" onclick="openAdd()" style="display: flex;">+ Add week</button>
     <button class="btn btn-muted" onclick="exportData()" title="Save all your data to a backup file">⬇ Export</button>
     <button class="btn btn-blue" onclick="exportShareable()" title="Download a standalone HTML file with all data baked in — share with anyone!">📤 Share</button>
-    <label class="btn btn-muted" style="cursor:pointer;" title="Restore data from a backup file">⬆ Import<input type="file" accept=".json" onchange="importData(event)" style="display:none;"/></label>
+    <label class="btn btn-muted" style="cursor:pointer;" title="Restore data from a backup file">⬆ Import<input type="file" accept=".json" onchange="importData(event)" style="display:none;"></label>
     <button class="btn btn-blue" onclick="exportShareable()" title="Create a shareable HTML file with all data baked in">📤 Share</button>
   </div>
 </div>
 
 <!-- MAIN -->
 <div class="main">
-  <div class="vbar" id="vb"><span>🔒 View-only mode — data is live</span><button class="ul" onclick="toggleMode()">Enter PIN to edit</button></div>
-  <div class="whdr" id="whdr"></div>
+  <div class="vbar" id="vb" style="display: none;"><span>🔒 View-only mode — data is live</span><button class="ul" onclick="toggleMode()">Enter PIN to edit</button></div>
+  <div class="whdr" id="whdr">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <span style="font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:0.06em;">Week label</span>
+        <input class="wni" id="wni" value="Apr 18–Apr 24" onblur="swn()" onkeydown="if(event.key==='Enter')this.blur()" style="width:200px;">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <span style="font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:0.06em;">Tab name</span>
+        <input class="wni" id="wnis" value="Apr 18" onblur="swn()" onkeydown="if(event.key==='Enter')this.blur()" style="width:100px;">
+      </div>
+    </div>
+    <button class="btn btn-red" onclick="dw()">Delete week</button></div>
 
   <!-- VOLUME -->
   <div class="sec">Volume overview</div>
-  <div class="mg" id="mg"></div>
+  <div class="mg" id="mg"><div class="mc bl">
+      <div class="mlb">Active projects</div>
+      <div class="mc-top">
+        <span class="mv" id="mv_7_active">864</span>
+        <span class="msb">Total <span class="mtr"><span class="up">↑40</span></span> <span class="auto-sum-lbl">auto</span></span>
+      </div>
+      <div class="mc-breakdown"><div class="mc-pill"><span class="mc-pill-lbl">SFA</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_active_sfa">787</span></div><div class="mc-pill"><span class="mc-pill-lbl">LR</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_active_lr">46</span></div><div class="mc-pill"><span class="mc-pill-lbl">Sunrun</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_active_sun">29</span></div><div class="mc-pill"><span class="mc-pill-lbl">Cash</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_active_cash">1</span></div><div class="mc-pill"><span class="mc-pill-lbl">Loan</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_active_loan">1</span></div><div class="mc-pill"><span class="mc-pill-lbl">Prepaid</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_active_prepaid">0</span></div></div></div><div class="mc am">
+      <div class="mlb">New sales</div>
+      <div class="mc-top">
+        <span class="mv" id="mv_7_newSales">31</span>
+        <span class="msb">Weekly <span class="mtr"><span class="dn">↓14</span></span> <span class="auto-sum-lbl">auto</span></span>
+      </div>
+      <div class="mc-breakdown"><div class="mc-pill"><span class="mc-pill-lbl">SFA</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_newSales_sfa">26</span></div><div class="mc-pill"><span class="mc-pill-lbl">LR</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_newSales_lr">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Sunrun</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_newSales_sun">5</span></div><div class="mc-pill"><span class="mc-pill-lbl">Cash</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_newSales_cash">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Loan</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_newSales_loan">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Prepaid</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_newSales_prepaid">0</span></div></div></div><div class="mc gn">
+      <div class="mlb">Installs completed</div>
+      <div class="mc-top">
+        <span class="mv" id="mv_7_installs">17</span>
+        <span class="msb">Weekly <span class="mtr"><span class="dn">↓15</span></span> <span class="auto-sum-lbl">auto</span></span>
+      </div>
+      <div class="mc-breakdown"><div class="mc-pill"><span class="mc-pill-lbl">SFA</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_installs_sfa">17</span></div><div class="mc-pill"><span class="mc-pill-lbl">LR</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_installs_lr">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Sunrun</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_installs_sun">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Cash</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_installs_cash">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Loan</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_installs_loan">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Prepaid</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_installs_prepaid">0</span></div></div></div><div class="mc tl">
+      <div class="mlb">PTOs achieved</div>
+      <div class="mc-top">
+        <span class="mv" id="mv_7_ptos">19</span>
+        <span class="msb">Weekly <span class="mtr"><span class="dn">↓8</span></span> <span class="auto-sum-lbl">auto</span></span>
+      </div>
+      <div class="mc-breakdown"><div class="mc-pill"><span class="mc-pill-lbl">SFA</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_ptos_sfa">18</span></div><div class="mc-pill"><span class="mc-pill-lbl">LR</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_ptos_lr">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Sunrun</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_ptos_sun">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Cash</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_ptos_cash">0</span></div><div class="mc-pill"><span class="mc-pill-lbl">Loan</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_ptos_loan">1</span></div><div class="mc-pill"><span class="mc-pill-lbl">Prepaid</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_ptos_prepaid">0</span></div></div></div><div class="mc gn">
+      <div class="mlb">All-time closed</div>
+      <div class="mc-top">
+        <span class="mv" id="mv_7_closed">532</span>
+        <span class="msb">Cumulative <span class="mtr"><span class="up">↑2</span></span> <span class="auto-sum-lbl">auto</span></span>
+      </div>
+      <div class="mc-breakdown"><div class="mc-pill"><span class="mc-pill-lbl">SFA</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_closed_sfa">376</span></div><div class="mc-pill"><span class="mc-pill-lbl">LR</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_closed_lr">130</span></div><div class="mc-pill"><span class="mc-pill-lbl">Sunrun</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_closed_sun">7</span></div><div class="mc-pill"><span class="mc-pill-lbl">Cash</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_closed_cash">7</span></div><div class="mc-pill"><span class="mc-pill-lbl">Loan</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_closed_loan">12</span></div><div class="mc-pill"><span class="mc-pill-lbl">Prepaid</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_closed_prepaid">0</span></div></div></div><div class="mc rd">
+      <div class="mlb">All-time cancelled</div>
+      <div class="mc-top">
+        <span class="mv" id="mv_7_cancelled">235</span>
+        <span class="msb">Cumulative <span class="mtr"><span class="up">↑5</span></span> <span class="auto-sum-lbl">auto</span></span>
+      </div>
+      <div class="mc-breakdown"><div class="mc-pill"><span class="mc-pill-lbl">SFA</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_cancelled_sfa">142</span></div><div class="mc-pill"><span class="mc-pill-lbl">LR</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_cancelled_lr">79</span></div><div class="mc-pill"><span class="mc-pill-lbl">Sunrun</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_cancelled_sun">10</span></div><div class="mc-pill"><span class="mc-pill-lbl">Cash</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_cancelled_cash">2</span></div><div class="mc-pill"><span class="mc-pill-lbl">Loan</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_cancelled_loan">2</span></div><div class="mc-pill"><span class="mc-pill-lbl">Prepaid</span><span contenteditable="true" class="mc-pill-val ed" id="vp_7_cancelled_prepaid">0</span></div></div></div></div>
 
   <!-- SALES NOTES -->
-  <div class="sec">Sales notes — <span id="snlbl" style="text-transform:none;font-weight:500;color:var(--tx);"></span></div>
+  <div class="sec">Sales notes — <span id="snlbl" style="text-transform:none;font-weight:500;color:var(--tx);">Apr 18–Apr 24</span></div>
   <div class="notes-card">
     <div class="notes-grid" id="notesGrid">
-    </div>
+      <div class="note-block">
+        <div class="note-label">SFA Sales</div>
+        <div class="note-text ed-area" id="sfaNote" contenteditable="true">With IPA, PPA, ILSFA Verified and SS schedule - 10 project
+Not yet ILSFA Verified - 13 projects
+No Site Survey Schedule yet - 3 projects
+Total: 26 Sales</div>
+      </div>
+      <div class="note-block">
+        <div class="note-label">Regular Sales</div>
+        <div class="note-text ed-area" id="regNote" contenteditable="true">Sunrun - 0 (NTE Approved) (5 Not yet NTE Approved)
+Lightreach - 0
+Total: 5 Sale</div>
+      </div></div>
   </div>
 
   <!-- TRENDS -->
   <div class="sec">6-week trends</div>
   <div class="cg">
-    <div class="card"><div class="ctitle">Active projects <span>all weeks</span></div><div class="cw" style="height:170px;"><canvas id="c_a" role="img" aria-label="Active projects"></canvas></div></div>
-    <div class="card"><div class="ctitle">Installs & PTOs <span>weekly</span></div><div class="cw" style="height:170px;"><canvas id="c_i" role="img" aria-label="Installs PTOs"></canvas></div></div>
-    <div class="card"><div class="ctitle">New sales <span>weekly</span></div><div class="cw" style="height:170px;"><canvas id="c_s" role="img" aria-label="New sales"></canvas></div></div>
-    <div class="card"><div class="ctitle">Total sale→PTO <span>days SFA</span></div><div class="cw" style="height:170px;"><canvas id="c_c" role="img" aria-label="Cycle time"></canvas></div></div>
+    <div class="card"><div class="ctitle">Active projects <span>all weeks</span></div><div class="cw" style="height:170px;"><canvas id="c_a" role="img" aria-label="Active projects" style="box-sizing: border-box; display: block; height: 170px; width: 609px;" width="609" height="170"></canvas></div></div>
+    <div class="card"><div class="ctitle">Installs &amp; PTOs <span>weekly</span></div><div class="cw" style="height:170px;"><canvas id="c_i" role="img" aria-label="Installs PTOs" style="box-sizing: border-box; display: block; height: 170px; width: 609px;" width="609" height="170"></canvas></div></div>
+    <div class="card"><div class="ctitle">New sales <span>weekly</span></div><div class="cw" style="height:170px;"><canvas id="c_s" role="img" aria-label="New sales" style="box-sizing: border-box; display: block; height: 170px; width: 609px;" width="609" height="170"></canvas></div></div>
+    <div class="card"><div class="ctitle">Total sale→PTO <span>days SFA</span></div><div class="cw" style="height:170px;"><canvas id="c_c" role="img" aria-label="Cycle time" style="box-sizing: border-box; display: block; height: 170px; width: 609px;" width="609" height="170"></canvas></div></div>
   </div>
 
   <!-- CYCLE TIMES -->
-  <div class="sec">Cycle times — <span id="cl" style="text-transform:none;font-weight:500;color:var(--tx);"></span></div>
+  <div class="sec">Cycle times — <span id="cl" style="text-transform:none;font-weight:500;color:var(--tx);">Apr 18–Apr 24</span></div>
   <div class="cg">
     <div class="card">
       <div class="ctitle">Stage cycle times <span>days per stage</span></div>
@@ -269,30 +326,309 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
             <th>Days</th><th style="color:var(--tl);">n</th>
           </tr>
         </thead>
-        <tbody id="ctBody"></tbody>
+        <tbody id="ctBody"><tr>
+      <td>Sale→Survey</td>
+      <td><span class="ct-val ed" id="ctv7_0" contenteditable="true" style="color:var(--gn);">16.87</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_0" contenteditable="true">26</span></td>
+      <td><span class="ct-val ed" id="clr7_0" contenteditable="true" style="color:var(--rd);">14</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_0" contenteditable="true">1</span></td>
+      <td><span class="ct-val ed" id="csu7_0" contenteditable="true" style="color:var(--gn);">6.4</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_0" contenteditable="true">6</span></td>
+      <td><span class="ct-val ed" id="cca7_0" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_0" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="clo7_0" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_0" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="cpr7_0" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_0" contenteditable="true">0</span></td>
+    </tr><tr>
+      <td>Survey→Pipeline</td>
+      <td><span class="ct-val ed" id="ctv7_1" contenteditable="true" style="color:var(--gn);">11.5</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_1" contenteditable="true">8</span></td>
+      <td><span class="ct-val ed" id="clr7_1" contenteditable="true" style="color:var(--rd);">3.8</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_1" contenteditable="true">4</span></td>
+      <td><span class="ct-val ed" id="csu7_1" contenteditable="true" style="color:var(--rd);">3</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_1" contenteditable="true">3</span></td>
+      <td><span class="ct-val ed" id="cca7_1" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_1" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="clo7_1" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_1" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="cpr7_1" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_1" contenteditable="true">0</span></td>
+    </tr><tr>
+      <td>Pipeline→Permit</td>
+      <td><span class="ct-val ed" id="ctv7_2" contenteditable="true" style="color:var(--gn);">98.25</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_2" contenteditable="true">4</span></td>
+      <td><span class="ct-val ed" id="clr7_2" contenteditable="true" style="color:var(--rd);">29.5</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_2" contenteditable="true">2</span></td>
+      <td><span class="ct-val ed" id="csu7_2" contenteditable="true" style="color:var(--rd);">14.5</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_2" contenteditable="true">2</span></td>
+      <td><span class="ct-val ed" id="cca7_2" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_2" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="clo7_2" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_2" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="cpr7_2" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_2" contenteditable="true">0</span></td>
+    </tr><tr>
+      <td>Permit→Approval</td>
+      <td><span class="ct-val ed" id="ctv7_3" contenteditable="true" style="color:var(--gn);">34.38</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_3" contenteditable="true">13</span></td>
+      <td><span class="ct-val ed" id="clr7_3" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_3" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="csu7_3" contenteditable="true" style="color:var(--rd);">57</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_3" contenteditable="true">1</span></td>
+      <td><span class="ct-val ed" id="cca7_3" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_3" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="clo7_3" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_3" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="cpr7_3" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_3" contenteditable="true">0</span></td>
+    </tr><tr>
+      <td>Approval→Install</td>
+      <td><span class="ct-val ed" id="ctv7_4" contenteditable="true" style="color:var(--rd);">68.15</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_4" contenteditable="true">20</span></td>
+      <td><span class="ct-val ed" id="clr7_4" contenteditable="true" style="color:var(--rd);">217</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_4" contenteditable="true">1</span></td>
+      <td><span class="ct-val ed" id="csu7_4" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_4" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="cca7_4" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_4" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="clo7_4" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_4" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="cpr7_4" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_4" contenteditable="true">0</span></td>
+    </tr><tr>
+      <td>Install→Done</td>
+      <td><span class="ct-val ed" id="ctv7_5" contenteditable="true" style="color:var(--gn);">1.25</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_5" contenteditable="true">17</span></td>
+      <td><span class="ct-val ed" id="clr7_5" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_5" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="csu7_5" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_5" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="cca7_5" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_5" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="clo7_5" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_5" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="cpr7_5" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_5" contenteditable="true">0</span></td>
+    </tr><tr>
+      <td>Done→Inspect</td>
+      <td><span class="ct-val ed" id="ctv7_6" contenteditable="true" style="color:var(--rd);">15.56</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_6" contenteditable="true">17</span></td>
+      <td><span class="ct-val ed" id="clr7_6" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_6" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="csu7_6" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_6" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="cca7_6" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_6" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="clo7_6" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_6" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="cpr7_6" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_6" contenteditable="true">0</span></td>
+    </tr><tr>
+      <td>Inspect→PTO</td>
+      <td><span class="ct-val ed" id="ctv7_7" contenteditable="true" style="color:var(--rd);">18.5</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_7" contenteditable="true">13</span></td>
+      <td><span class="ct-val ed" id="clr7_7" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_7" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="csu7_7" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_7" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="cca7_7" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_7" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="clo7_7" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_7" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="cpr7_7" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_7" contenteditable="true">0</span></td>
+    </tr><tr>
+      <td>PTO→Approve</td>
+      <td><span class="ct-val ed" id="ctv7_8" contenteditable="true" style="color:var(--gn);">9.1</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ctn7_8" contenteditable="true">18</span></td>
+      <td><span class="ct-val ed" id="clr7_8" contenteditable="true" style="color:var(--rd);">70</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clrn7_8" contenteditable="true">1</span></td>
+      <td><span class="ct-val ed" id="csu7_8" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="csun7_8" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="cca7_8" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="ccan7_8" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="clo7_8" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="clon7_8" contenteditable="true">0</span></td>
+      <td><span class="ct-val ed" id="cpr7_8" contenteditable="true" style="color:rgba(255,255,255,0.2);">—</span></td><td><span class="ct-val ed" style="color:var(--tl);" id="cprn7_8" contenteditable="true">0</span></td>
+    </tr></tbody>
       </table></div>
     </div>
-    <div class="card"><div class="ctitle">Permit→approval trend <span>all weeks</span></div><div class="cw" style="height:255px;"><canvas id="c_pm2" role="img" aria-label="Permit trend"></canvas></div></div>
+    <div class="card"><div class="ctitle">Permit→approval trend <span>all weeks</span></div><div class="cw" style="height:255px;"><canvas id="c_pm2" role="img" aria-label="Permit trend" style="box-sizing: border-box; display: block; height: 255px; width: 501px;" width="501" height="255"></canvas></div></div>
   </div>
 
   <!-- PENDING -->
-  <div class="sec">Pending projects — <span id="pl" style="text-transform:none;font-weight:500;color:var(--tx);"></span></div>
-  <div class="card full"><div class="ctitle">Projects exceeding stage thresholds</div><div style="overflow-x:auto;"><table class="pt"><thead><tr><th>Stage</th><th>Threshold</th><th style="text-align:right;">SFA</th><th style="text-align:right;">LR</th><th style="text-align:right;">Sunrun</th><th style="text-align:right;">Cash</th><th style="text-align:right;">Loan</th><th style="text-align:right;">Prepaid</th><th style="text-align:right;">Total</th></tr></thead><tbody id="ptb"></tbody></table></div></div>
+  <div class="sec">Pending projects — <span id="pl" style="text-transform:none;font-weight:500;color:var(--tx);">Apr 18–Apr 24</span></div>
+  <div class="card full"><div class="ctitle">Projects exceeding stage thresholds</div><div style="overflow-x:auto;"><table class="pt"><thead><tr><th>Stage</th><th>Threshold</th><th style="text-align:right;">SFA</th><th style="text-align:right;">LR</th><th style="text-align:right;">Sunrun</th><th style="text-align:right;">Cash</th><th style="text-align:right;">Loan</th><th style="text-align:right;">Prepaid</th><th style="text-align:right;">Total</th></tr></thead><tbody id="ptb"><tr>
+      <td>Sale→Survey</td>
+      <td style="color:var(--mu);">&gt;10d</td>
+      <td class="nm ed" style="text-align:right;" id="ps7_0" contenteditable="true">4</td><td class="nm ed" style="text-align:right;" id="plr7_0" contenteditable="true">1</td><td class="nm ed" style="text-align:right;" id="psu7_0" contenteditable="true">1</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_0" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_0" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_0" contenteditable="true">—</td>
+      <td class="nm" style="text-align:right;color:#34d399;font-weight:600;" id="pt7_0">6</td></tr><tr>
+      <td>Survey→Pipeline</td>
+      <td style="color:var(--mu);">&gt;5d</td>
+      <td class="nm ed" style="text-align:right;" id="ps7_1" contenteditable="true">25</td><td class="nm ed" style="text-align:right;" id="plr7_1" contenteditable="true">1</td><td class="nm ed" style="text-align:right;" id="psu7_1" contenteditable="true">1</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_1" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_1" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_1" contenteditable="true">—</td>
+      <td class="nm" style="text-align:right;color:#fbbf24;font-weight:600;" id="pt7_1">27</td></tr><tr>
+      <td>Pipeline→Permit</td>
+      <td style="color:var(--mu);">&gt;10d</td>
+      <td class="nm ed" style="text-align:right;" id="ps7_2" contenteditable="true">14</td><td class="nm ed" style="text-align:right;" id="plr7_2" contenteditable="true">4</td><td class="nm ed" style="text-align:right;" id="psu7_2" contenteditable="true">1</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_2" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_2" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_2" contenteditable="true">—</td>
+      <td class="nm" style="text-align:right;color:#34d399;font-weight:600;" id="pt7_2">19</td></tr><tr>
+      <td>Permit→Approval</td>
+      <td style="color:var(--mu);">&gt;21d</td>
+      <td class="nm ed" style="text-align:right;" id="ps7_3" contenteditable="true">83</td><td class="nm ed" style="text-align:right;" id="plr7_3" contenteditable="true">5</td><td class="nm ed" style="text-align:right;" id="psu7_3" contenteditable="true">3</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_3" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_3" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_3" contenteditable="true">—</td>
+      <td class="nm" style="text-align:right;color:#f87171;font-weight:600;" id="pt7_3">91</td></tr><tr>
+      <td>Approval→Install</td>
+      <td style="color:var(--mu);">&gt;5d</td>
+      <td class="nm ed" style="text-align:right;" id="ps7_4" contenteditable="true">40</td><td class="nm ed" style="text-align:right;" id="plr7_4" contenteditable="true">18</td><td class="nm ct-zero ed" style="text-align:right;" id="psu7_4" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_4" contenteditable="true">—</td><td class="nm ed" style="text-align:right;" id="plo7_4" contenteditable="true">1</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_4" contenteditable="true">—</td>
+      <td class="nm" style="text-align:right;color:#fbbf24;font-weight:600;" id="pt7_4">59</td></tr><tr>
+      <td>Install progress</td>
+      <td style="color:var(--mu);">&gt;5d</td>
+      <td class="nm ct-zero ed" style="text-align:right;" id="ps7_5" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plr7_5" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="psu7_5" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_5" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_5" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_5" contenteditable="true">—</td>
+      <td class="nm" style="text-align:right;color:#34d399;font-weight:600;" id="pt7_5">0</td></tr><tr>
+      <td>Done→Inspect</td>
+      <td style="color:var(--mu);">&gt;5d</td>
+      <td class="nm ed" style="text-align:right;" id="ps7_6" contenteditable="true">18</td><td class="nm ct-zero ed" style="text-align:right;" id="plr7_6" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="psu7_6" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_6" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_6" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_6" contenteditable="true">—</td>
+      <td class="nm" style="text-align:right;color:#34d399;font-weight:600;" id="pt7_6">18</td></tr><tr>
+      <td>Inspect→PTO</td>
+      <td style="color:var(--mu);">&gt;5d</td>
+      <td class="nm ed" style="text-align:right;" id="ps7_7" contenteditable="true">3</td><td class="nm ed" style="text-align:right;" id="plr7_7" contenteditable="true">1</td><td class="nm ct-zero ed" style="text-align:right;" id="psu7_7" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_7" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_7" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_7" contenteditable="true">—</td>
+      <td class="nm" style="text-align:right;color:#34d399;font-weight:600;" id="pt7_7">4</td></tr><tr>
+      <td>PTO→Approve</td>
+      <td style="color:var(--mu);">&gt;10d</td>
+      <td class="nm ed" style="text-align:right;" id="ps7_8" contenteditable="true">2</td><td class="nm ed" style="text-align:right;" id="plr7_8" contenteditable="true">1</td><td class="nm ct-zero ed" style="text-align:right;" id="psu7_8" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="pca7_8" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="plo7_8" contenteditable="true">—</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_8" contenteditable="true">—</td>
+      <td class="nm" style="text-align:right;color:#34d399;font-weight:600;" id="pt7_8">3</td></tr><tr style="background:rgba(248,113,113,0.04);">
+      <td style="font-weight:600;">Total &gt;90d</td>
+      <td style="color:var(--mu);">&gt;90d</td>
+      <td class="nm ed" style="text-align:right;" id="ps7_9" contenteditable="true">81</td><td class="nm ed" style="text-align:right;" id="plr7_9" contenteditable="true">31</td><td class="nm ct-zero ed" style="text-align:right;" id="psu7_9" contenteditable="true">—</td><td class="nm ed" style="text-align:right;" id="pca7_9" contenteditable="true">1</td><td class="nm ed" style="text-align:right;" id="plo7_9" contenteditable="true">1</td><td class="nm ct-zero ed" style="text-align:right;" id="ppr7_9" contenteditable="true">—</td>
+      <td class="nm" style="text-align:right;color:#f87171;font-weight:600;" id="pt7_9">114</td></tr></tbody></table></div></div>
 
   <!-- RISK -->
-  <div class="sec">Operational risk — <span id="rl" style="text-transform:none;font-weight:500;color:var(--tx);"></span></div>
+  <div class="sec">Operational risk — <span id="rl" style="text-transform:none;font-weight:500;color:var(--tx);">Apr 18–Apr 24</span></div>
   <div class="cg">
-    <div class="card full"><div class="ctitle">Risk indicators <span id="rh"></span></div><div class="rl" id="rlist"></div></div>
+    <div class="card full"><div class="ctitle">Risk indicators <span id="rh">enter fractions below</span></div><div class="rl" id="rlist"><div class="risk-section"><div class="risk-group-title">Weekly correction rates</div><div style="padding:8px 0;border-bottom:1px solid var(--bd);">
+      <div style="font-size:15px;font-weight:500;color:var(--tx);margin-bottom:8px;">Permit correction</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div class="risk-dual-cell">
+          <span class="risk-dual-tag sfa">SFA</span>
+          <div class="risk-dual-vals">
+            <span class="risk-frac"><span class="rnum ed" id="rs7_pcSfaN" contenteditable="true">3</span><span class="rsep">/</span><span class="rden ed" id="rs7_pcSfaD" contenteditable="true">13</span></span>
+            <div class="risk-pct-col"><span class="bg bga">23%</span><span class="auto-lbl">auto</span></div>
+          </div>
+        </div>
+        <div class="risk-dual-cell">
+          <span class="risk-dual-tag reg">REG</span>
+          <div class="risk-dual-vals">
+            <span class="risk-frac"><span class="rnum ed" id="rr7_pcRegN" contenteditable="true">1</span><span class="rsep">/</span><span class="rden ed" id="rr7_pcRegD" contenteditable="true">1</span></span>
+            <div class="risk-pct-col"><span class="bg bgr">100%</span><span class="auto-lbl">auto</span></div>
+          </div>
+        </div>
+      </div>
+    </div><div style="padding:8px 0;border-bottom:1px solid var(--bd);">
+      <div style="font-size:15px;font-weight:500;color:var(--tx);margin-bottom:8px;">IPA Part 1 correction</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div class="risk-dual-cell">
+          <span class="risk-dual-tag sfa">SFA</span>
+          <div class="risk-dual-vals">
+            <span class="risk-frac"><span class="rnum ed" id="rs7_i1SfaN" contenteditable="true">4</span><span class="rsep">/</span><span class="rden ed" id="rs7_i1SfaD" contenteditable="true">4</span></span>
+            <div class="risk-pct-col"><span class="bg bgr">100%</span><span class="auto-lbl">auto</span></div>
+          </div>
+        </div>
+        <div class="risk-dual-cell">
+          <span class="risk-dual-tag reg">REG</span>
+          <div class="risk-dual-vals">
+            <span class="risk-frac"><span class="rnum ed" id="rr7_i1RegN" contenteditable="true">0</span><span class="rsep">/</span><span class="rden ed" id="rr7_i1RegD" contenteditable="true">0</span></span>
+            <div class="risk-pct-col"><span class="bg bgm">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div><div style="padding:8px 0;border-bottom:1px solid var(--bd);">
+      <div style="font-size:15px;font-weight:500;color:var(--tx);margin-bottom:8px;">IPA Part 2 correction</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div class="risk-dual-cell">
+          <span class="risk-dual-tag sfa">SFA</span>
+          <div class="risk-dual-vals">
+            <span class="risk-frac"><span class="rnum ed" id="rs7_i2SfaN" contenteditable="true">3</span><span class="rsep">/</span><span class="rden ed" id="rs7_i2SfaD" contenteditable="true">9</span></span>
+            <div class="risk-pct-col"><span class="bg bga">33%</span><span class="auto-lbl">auto</span></div>
+          </div>
+        </div>
+        <div class="risk-dual-cell">
+          <span class="risk-dual-tag reg">REG</span>
+          <div class="risk-dual-vals">
+            <span class="risk-frac"><span class="rnum ed" id="rr7_i2RegN" contenteditable="true">4</span><span class="rsep">/</span><span class="rden ed" id="rr7_i2RegD" contenteditable="true">6</span></span>
+            <div class="risk-pct-col"><span class="bg bga">67%</span><span class="auto-lbl">auto</span></div>
+          </div>
+        </div>
+      </div>
+    </div><div class="risk-group-title" style="margin-top:8px;">Monthly rates (MTD)</div><div style="padding:8px 0;border-bottom:1px solid var(--bd);">
+      <div style="font-size:15px;font-weight:500;color:var(--tx);margin-bottom:8px;">Reinspection (MTD)</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div class="risk-dual-cell">
+          <span class="risk-dual-tag sfa">SFA</span>
+          <div class="risk-dual-vals">
+            <span class="risk-frac"><span class="rnum ed" id="rs7_riSfaN" contenteditable="true">14</span><span class="rsep">/</span><span class="rden ed" id="rs7_riSfaD" contenteditable="true">62</span></span>
+            <div class="risk-pct-col"><span class="bg bga">23%</span><span class="auto-lbl">auto</span></div>
+          </div>
+        </div>
+        <div class="risk-dual-cell">
+          <span class="risk-dual-tag reg">REG</span>
+          <div class="risk-dual-vals">
+            <span class="risk-frac"><span class="rnum ed" id="rr7_riRegN" contenteditable="true">0</span><span class="rsep">/</span><span class="rden ed" id="rr7_riRegD" contenteditable="true">1</span></span>
+            <div class="risk-pct-col"><span class="bg bgg">0%</span><span class="auto-lbl">auto</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="risk-note ed" id="rnote7_riNote" contenteditable="true">14/62 failed
+8 Failed but passed
+2 ongoing failed
+4 rescheduled</div>
+    </div><div style="padding:8px 0;border-bottom:1px solid var(--bd);">
+      <div style="font-size:15px;font-weight:500;color:var(--tx);margin-bottom:8px;">PTO rejection (MTD)</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div class="risk-dual-cell">
+          <span class="risk-dual-tag sfa">SFA</span>
+          <div class="risk-dual-vals">
+            <span class="risk-frac"><span class="rnum ed" id="rs7_prSfaN" contenteditable="true">8</span><span class="rsep">/</span><span class="rden ed" id="rs7_prSfaD" contenteditable="true">45</span></span>
+            <div class="risk-pct-col"><span class="bg bgg">18%</span><span class="auto-lbl">auto</span></div>
+          </div>
+        </div>
+        <div class="risk-dual-cell">
+          <span class="risk-dual-tag reg">REG</span>
+          <div class="risk-dual-vals">
+            <span class="risk-frac"><span class="rnum ed" id="rr7_prRegN" contenteditable="true">2</span><span class="rsep">/</span><span class="rden ed" id="rr7_prRegD" contenteditable="true">4</span></span>
+            <div class="risk-pct-col"><span class="bg bga">50%</span><span class="auto-lbl">auto</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="risk-note ed" id="rnote7_prNote" contenteditable="true">2/4 received correction</div>
+    </div></div></div></div>
   </div>
 
   <!-- PM -->
-  <div class="sec">Project managers — <span id="pml" style="text-transform:none;font-weight:500;color:var(--tx);"></span></div>
+  <div class="sec">Project managers — <span id="pml" style="text-transform:none;font-weight:500;color:var(--tx);">Apr 18–Apr 24</span></div>
   <div class="cg">
     <div class="card full">
-      <div class="ctitle">Scorecard <span id="ph"></span></div>
-      <div style="overflow-x:auto;"><table class="pmt"><thead><tr><th>Manager</th><th style="text-align:right;">Active</th><th style="text-align:right;">Won</th><th style="text-align:right;">Lost</th><th style="text-align:right;">On Hold</th><th style="text-align:right;">Total</th><th id="pmDelHdr"></th></tr></thead><tbody id="pmtb"></tbody></table></div>
-      <div class="pm-add-row" id="pmAddRow" style="display:none;">
-        <input id="pmNewName" placeholder="Manager name"/>
+      <div class="ctitle">Scorecard <span id="ph">click to edit</span></div>
+      <div style="overflow-x:auto;"><table class="pmt"><thead><tr><th>Manager</th><th style="text-align:right;">Active</th><th style="text-align:right;">Won</th><th style="text-align:right;">Lost</th><th style="text-align:right;">On Hold</th><th style="text-align:right;">Total</th><th id="pmDelHdr"></th></tr></thead><tbody id="pmtb"><tr><td><div style="font-size:15px;font-weight:500;">Mary Ann Sante</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
+        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_0" contenteditable="true">7</td>
+        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_0" contenteditable="true">38</td>
+        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_0" contenteditable="true">8</td>
+        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_0" contenteditable="true">0</td>
+        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_0">53</td>
+        <td><button class="btn btn-red btn-sm" onclick="delPM(7,0)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Genneva Arguelles</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
+        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_1" contenteditable="true">93</td>
+        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_1" contenteditable="true">84</td>
+        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_1" contenteditable="true">18</td>
+        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_1" contenteditable="true">5</td>
+        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_1">200</td>
+        <td><button class="btn btn-red btn-sm" onclick="delPM(7,1)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Marielle Morla</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
+        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_2" contenteditable="true">99</td>
+        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_2" contenteditable="true">40</td>
+        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_2" contenteditable="true">25</td>
+        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_2" contenteditable="true">1</td>
+        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_2">165</td>
+        <td><button class="btn btn-red btn-sm" onclick="delPM(7,2)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Allaiza Velasquez</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
+        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_3" contenteditable="true">96</td>
+        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_3" contenteditable="true">90</td>
+        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_3" contenteditable="true">18</td>
+        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_3" contenteditable="true">6</td>
+        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_3">210</td>
+        <td><button class="btn btn-red btn-sm" onclick="delPM(7,3)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Francheska Alvarez</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
+        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_4" contenteditable="true">99</td>
+        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_4" contenteditable="true">37</td>
+        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_4" contenteditable="true">25</td>
+        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_4" contenteditable="true">3</td>
+        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_4">164</td>
+        <td><button class="btn btn-red btn-sm" onclick="delPM(7,4)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Angelica Capili</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
+        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_5" contenteditable="true">75</td>
+        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_5" contenteditable="true">0</td>
+        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_5" contenteditable="true">11</td>
+        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_5" contenteditable="true">8</td>
+        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_5">94</td>
+        <td><button class="btn btn-red btn-sm" onclick="delPM(7,5)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">May Contestable</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
+        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_6" contenteditable="true">85</td>
+        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_6" contenteditable="true">0</td>
+        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_6" contenteditable="true">10</td>
+        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_6" contenteditable="true">2</td>
+        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_6">97</td>
+        <td><button class="btn btn-red btn-sm" onclick="delPM(7,6)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Liza Cequena</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
+        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_7" contenteditable="true">84</td>
+        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_7" contenteditable="true">0</td>
+        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_7" contenteditable="true">6</td>
+        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_7" contenteditable="true">3</td>
+        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_7">93</td>
+        <td><button class="btn btn-red btn-sm" onclick="delPM(7,7)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Dane Fullos</div><div style="font-size:13px;color:var(--mu);">SFA</div></td>
+        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_8" contenteditable="true">84</td>
+        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_8" contenteditable="true">0</td>
+        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_8" contenteditable="true">1</td>
+        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_8" contenteditable="true">0</td>
+        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_8">85</td>
+        <td><button class="btn btn-red btn-sm" onclick="delPM(7,8)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Ara Pascual</div><div style="font-size:13px;color:var(--mu);">REG</div></td>
+        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_9" contenteditable="true">1</td>
+        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_9" contenteditable="true">18</td>
+        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_9" contenteditable="true">17</td>
+        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_9" contenteditable="true">1</td>
+        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_9">37</td>
+        <td><button class="btn btn-red btn-sm" onclick="delPM(7,9)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Dianne Orias</div><div style="font-size:13px;color:var(--mu);">REG</div></td>
+        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_10" contenteditable="true">38</td>
+        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_10" contenteditable="true">38</td>
+        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_10" contenteditable="true">19</td>
+        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_10" contenteditable="true">1</td>
+        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_10">96</td>
+        <td><button class="btn btn-red btn-sm" onclick="delPM(7,10)">✕</button></td></tr><tr><td><div style="font-size:15px;font-weight:500;">Lester Belarmino</div><div style="font-size:13px;color:var(--mu);">REG</div></td>
+        <td class="nm ed" style="text-align:right;color:var(--ac);" id="pma7_11" contenteditable="true">34</td>
+        <td class="nm ed" style="text-align:right;color:var(--gn);" id="pmw7_11" contenteditable="true">60</td>
+        <td class="nm ed" style="text-align:right;color:var(--rd);" id="pml7_11" contenteditable="true">22</td>
+        <td class="nm ed" style="text-align:right;color:var(--am);" id="pmh7_11" contenteditable="true">3</td>
+        <td class="nm" style="text-align:right;font-weight:600;color:var(--tx);" id="pmt7_11">119</td>
+        <td><button class="btn btn-red btn-sm" onclick="delPM(7,11)">✕</button></td></tr></tbody></table></div>
+      <div class="pm-add-row" id="pmAddRow" style="display: flex;">
+        <input id="pmNewName" placeholder="Manager name">
         <select id="pmNewType"><option value="SFA">SFA</option><option value="REG">REG</option></select>
         <button class="btn btn-green btn-sm" onclick="addPM()">+ Add</button>
       </div>
@@ -406,7 +742,7 @@ const SEED=[
     p:null,m:null}
 ];
 
-let W=[{"label":"Feb 23\u2013Mar 1","short":"Feb 23","sfaNote":"SFA sales notes unavailable","regNote":"Regular sales notes unavailable","vol":{"active":{"sfa":872,"lr":69,"sun":2,"cash":1,"loan":3,"prepaid":0},"newSales":{"sfa":35,"lr":1,"sun":0,"cash":0,"loan":0,"prepaid":0},"installs":{"sfa":11,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"ptos":{"sfa":16,"lr":2,"sun":0,"cash":0,"loan":1,"prepaid":0},"concerns":{"sfa":3,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"closed":{"sfa":164,"lr":109,"sun":7,"cash":0,"loan":0,"prepaid":0},"cancelled":{"sfa":105,"lr":67,"sun":1,"cash":0,"loan":0,"prepaid":0}},"active":947,"newSales":36,"installs":11,"ptos":19,"concerns":3,"closed":280,"cancelled":173,"cycleTotal":253,"ct":[24.2,9.8,237,60,128,0.5,29.26,3.47,5.62],"ctN":[0,0,0,0,0,0,0,0,0],"ctLR":[0,0,0,90.33,0,0,55,1,18.5],"ctSun":[0,0,7,0,0,0,0,0,0],"ctCash":[0,0,0,0,0,0,0,0,0],"ctLoan":[0,0,0,0,0,0,54,1,14],"ctPre":[0,0,0,0,0,0,0,0,0],"ctLRn":[0,0,0,0,0,0,0,0,0],"ctSunn":[0,0,0,0,0,0,0,0,0],"ctCashn":[0,0,0,0,0,0,0,0,0],"ctLoann":[0,0,0,0,0,0,0,0,0],"ctPren":[0,0,0,0,0,0,0,0,0],"pa":60,"risk":{"pcSfaN":null,"pcSfaD":null,"pcRegN":null,"pcRegD":null,"i1SfaN":null,"i1SfaD":null,"i1RegN":null,"i1RegD":null,"i2SfaN":null,"i2SfaD":null,"i2RegN":null,"i2RegD":null,"riSfaN":null,"riSfaD":null,"riRegN":null,"riRegD":null,"prSfaN":null,"prSfaD":null,"prRegN":null,"prRegD":null,"riNote":"","prNote":""},"p":null,"m":null},{"label":"Feb 28\u2013Mar 6","short":"Feb 28","sfaNote":"SFA sales notes unavailable","regNote":"Regular sales notes unavailable","vol":{"active":{"sfa":885,"lr":72,"sun":2,"cash":1,"loan":3,"prepaid":0},"newSales":{"sfa":14,"lr":1,"sun":0,"cash":0,"loan":0,"prepaid":0},"installs":{"sfa":8,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"ptos":{"sfa":8,"lr":2,"sun":0,"cash":0,"loan":1,"prepaid":0},"concerns":{"sfa":6,"lr":3,"sun":0,"cash":0,"loan":0,"prepaid":0},"closed":{"sfa":320,"lr":137,"sun":7,"cash":0,"loan":0,"prepaid":0},"cancelled":{"sfa":116,"lr":72,"sun":1,"cash":0,"loan":0,"prepaid":0}},"active":963,"newSales":15,"installs":8,"ptos":11,"concerns":9,"closed":464,"cancelled":189,"cycleTotal":241,"ct":[18.9,7.5,136.13,36.28,68.9,0.5,17.5,2,8.5],"ctN":[0,0,0,0,0,0,0,0,0],"ctLR":[6,0,0,0,0,0,0,0,8],"ctSun":[0,5,0,0,0,0,0,0,0],"ctCash":[0,0,0,0,0,0,0,0,0],"ctLoan":[0,0,0,0,0,0,0,0,10],"ctPre":[0,0,0,0,0,0,0,0,0],"ctLRn":[0,0,0,0,0,0,0,0,0],"ctSunn":[0,0,0,0,0,0,0,0,0],"ctCashn":[0,0,0,0,0,0,0,0,0],"ctLoann":[0,0,0,0,0,0,0,0,0],"ctPren":[0,0,0,0,0,0,0,0,0],"pa":36.28,"risk":{"pcSfaN":null,"pcSfaD":null,"pcRegN":null,"pcRegD":null,"i1SfaN":null,"i1SfaD":null,"i1RegN":null,"i1RegD":null,"i2SfaN":null,"i2SfaD":null,"i2RegN":null,"i2RegD":null,"riSfaN":null,"riSfaD":null,"riRegN":null,"riRegD":null,"prSfaN":null,"prSfaD":null,"prRegN":null,"prRegD":null,"riNote":"","prNote":""},"p":null,"m":null},{"label":"Mar 7\u2013Mar 13","short":"Mar 7","sfaNote":"SFA sales notes unavailable","regNote":"Regular sales notes unavailable","vol":{"active":{"sfa":890,"lr":63,"sun":8,"cash":1,"loan":2,"prepaid":0},"newSales":{"sfa":9,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"installs":{"sfa":9,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"ptos":{"sfa":7,"lr":0,"sun":0,"cash":0,"loan":1,"prepaid":0},"concerns":{"sfa":0,"lr":1,"sun":0,"cash":0,"loan":0,"prepaid":0},"closed":{"sfa":320,"lr":113,"sun":7,"cash":7,"loan":11,"prepaid":0},"cancelled":{"sfa":125,"lr":70,"sun":1,"cash":2,"loan":2,"prepaid":0}},"active":964,"newSales":9,"installs":9,"ptos":8,"concerns":1,"closed":458,"cancelled":200,"cycleTotal":235,"ct":[11.3,7.2,131,90.75,62.5,4.5,25.3,3.4,6],"ctN":[0,0,0,0,0,0,0,0,0],"ctLR":[0,0,19,0,0,0,96.5,1,0],"ctSun":[19.8,3,0,0,0,0,0,0,0],"ctCash":[0,0,0,0,0,0,0,0,0],"ctLoan":[0,0,0,0,0,0,0,0,0],"ctPre":[0,0,0,0,0,0,0,0,0],"ctLRn":[0,0,0,0,0,0,0,0,0],"ctSunn":[0,0,0,0,0,0,0,0,0],"ctCashn":[0,0,0,0,0,0,0,0,0],"ctLoann":[0,0,0,0,0,0,0,0,0],"ctPren":[0,0,0,0,0,0,0,0,0],"pa":90.75,"risk":{"pcSfaN":null,"pcSfaD":null,"pcRegN":null,"pcRegD":null,"i1SfaN":null,"i1SfaD":null,"i1RegN":null,"i1RegD":null,"i2SfaN":null,"i2SfaD":null,"i2RegN":null,"i2RegD":null,"riSfaN":null,"riSfaD":null,"riRegN":null,"riRegD":null,"prSfaN":null,"prSfaD":null,"prRegN":null,"prRegD":null,"riNote":"","prNote":""},"p":null,"m":[{"n":"Mary Ann Sante","t":"SFA","a":9,"w":36,"l":8,"h":0},{"n":"Genneva Arguelles","t":"SFA","a":101,"w":79,"l":16,"h":0},{"n":"Marielle Morla","t":"SFA","a":102,"w":35,"l":25,"h":0},{"n":"Allaiza Velasquez","t":"SFA","a":102,"w":85,"l":17,"h":0},{"n":"Francheska Alvarez","t":"SFA","a":111,"w":26,"l":24,"h":0},{"n":"Angelica Capili","t":"SFA","a":73,"w":0,"l":7,"h":0},{"n":"May Contestable","t":"SFA","a":78,"w":0,"l":9,"h":0},{"n":"Liza Cequena","t":"SFA","a":72,"w":0,"l":4,"h":0},{"n":"Dane Fullos","t":"SFA","a":8,"w":0,"l":0,"h":0},{"n":"Ara Pascual","t":"REG","a":1,"w":19,"l":17,"h":0},{"n":"Dianne Orias","t":"REG","a":31,"w":36,"l":9,"h":0},{"n":"Lester Belarmino","t":"REG","a":26,"w":56,"l":14,"h":0}]},{"label":"Mar 14\u2013Mar 20","short":"Mar 14","sfaNote":"SFA sales notes unavailable","regNote":"Regular sales notes unavailable","vol":{"active":{"sfa":702,"lr":51,"sun":10,"cash":1,"loan":1,"prepaid":0},"newSales":{"sfa":7,"lr":0,"sun":5,"cash":0,"loan":0,"prepaid":0},"installs":{"sfa":5,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"ptos":{"sfa":5,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"concerns":{"sfa":0,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"closed":{"sfa":348,"lr":123,"sun":7,"cash":7,"loan":12,"prepaid":0},"cancelled":{"sfa":133,"lr":71,"sun":1,"cash":2,"loan":2,"prepaid":0}},"active":765,"newSales":12,"installs":5,"ptos":5,"concerns":0,"closed":497,"cancelled":209,"cycleTotal":272,"ct":[44.17,16.24,139.8,9.6,142.8,3.9,32.95,2.7,7.5],"ctN":[0,0,0,0,0,0,0,0,0],"ctLR":[0,0,0,0,0,0,78.96,1,0],"ctSun":[4.06,2.4,0,0,0,0,0,0,0],"ctCash":[0,0,0,0,0,0,0,0,0],"ctLoan":[0,0,0,0,0,0,0,0,0],"ctPre":[0,0,0,0,0,0,0,0,0],"ctLRn":[0,0,0,0,0,0,0,0,0],"ctSunn":[0,0,0,0,0,0,0,0,0],"ctCashn":[0,0,0,0,0,0,0,0,0],"ctLoann":[0,0,0,0,0,0,0,0,0],"ctPren":[0,0,0,0,0,0,0,0,0],"pa":9.6,"risk":{"pcSfaN":null,"pcSfaD":null,"pcRegN":null,"pcRegD":null,"i1SfaN":null,"i1SfaD":null,"i1RegN":null,"i1RegD":null,"i2SfaN":null,"i2SfaD":null,"i2RegN":null,"i2RegD":null,"riSfaN":null,"riSfaD":null,"riRegN":null,"riRegD":null,"prSfaN":null,"prSfaD":null,"prRegN":null,"prRegD":null,"riNote":"","prNote":""},"p":null,"m":[{"n":"Mary Ann Sante","t":"SFA","a":9,"w":36,"l":8,"h":0},{"n":"Genneva Arguelles","t":"SFA","a":101,"w":79,"l":17,"h":0},{"n":"Marielle Morla","t":"SFA","a":102,"w":35,"l":26,"h":0},{"n":"Allaiza Velasquez","t":"SFA","a":101,"w":85,"l":17,"h":0},{"n":"Francheska Alvarez","t":"SFA","a":109,"w":26,"l":26,"h":0},{"n":"Angelica Capili","t":"SFA","a":72,"w":0,"l":9,"h":4},{"n":"May Contestable","t":"SFA","a":78,"w":0,"l":9,"h":0},{"n":"Liza Cequena","t":"SFA","a":72,"w":0,"l":4,"h":0},{"n":"Dane Fullos","t":"SFA","a":10,"w":0,"l":0,"h":0},{"n":"Ara Pascual","t":"REG","a":1,"w":19,"l":17,"h":0},{"n":"Dianne Orias","t":"REG","a":32,"w":36,"l":9,"h":0},{"n":"Lester Belarmino","t":"REG","a":27,"w":56,"l":15,"h":0}]},{"label":"Mar 21\u2013Mar 27","short":"Mar 21","sfaNote":"With IPA, PPA, ILSFA Verified and SS schedule - 4 projects\nNot yet ILSFA Verified - 7 projects\nNo Site Survey Schedule yet - 2 projects\nTotal: 11 Sales","regNote":"Sunrun - 7 (Not yet NTP approved)\nTotal: 7 Sales","vol":{"active":{"sfa":719,"lr":46,"sun":15,"cash":1,"loan":1,"prepaid":0},"newSales":{"sfa":11,"lr":0,"sun":7,"cash":0,"loan":0,"prepaid":0},"installs":{"sfa":12,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"ptos":{"sfa":14,"lr":1,"sun":0,"cash":0,"loan":0,"prepaid":0},"concerns":{"sfa":2,"lr":1,"sun":0,"cash":0,"loan":0,"prepaid":0},"closed":{"sfa":349,"lr":126,"sun":7,"cash":7,"loan":12,"prepaid":0},"cancelled":{"sfa":134,"lr":73,"sun":5,"cash":2,"loan":2,"prepaid":0}},"active":782,"newSales":18,"installs":12,"ptos":15,"concerns":3,"closed":501,"cancelled":216,"cycleTotal":252,"ct":[16.19,15.15,174.25,32.92,59.9,0.8,26.6,1.3,13.7],"ctN":[0,0,0,0,0,0,0,0,0],"ctLR":[0,0,0,0,0,0,150.5,2,14],"ctSun":[7.86,1,0,0,0,0,0,0,0],"ctCash":[0,0,0,0,0,0,0,0,0],"ctLoan":[0,0,0,0,1,0,0,0,0],"ctPre":[0,0,0,0,0,0,0,0,0],"ctLRn":[0,0,0,0,0,0,0,0,0],"ctSunn":[0,0,0,0,0,0,0,0,0],"ctCashn":[0,0,0,0,0,0,0,0,0],"ctLoann":[0,0,0,0,0,0,0,0,0],"ctPren":[0,0,0,0,0,0,0,0,0],"pa":32.92,"risk":{"pcSfaN":null,"pcSfaD":null,"pcRegN":null,"pcRegD":null,"i1SfaN":null,"i1SfaD":null,"i1RegN":null,"i1RegD":null,"i2SfaN":null,"i2SfaD":null,"i2RegN":null,"i2RegD":null,"riSfaN":null,"riSfaD":null,"riRegN":null,"riRegD":null,"prSfaN":null,"prSfaD":null,"prRegN":null,"prRegD":null,"riNote":"","prNote":""},"p":{"stages":["Sale\u2192Survey","Survey\u2192Pipeline","Pipeline\u2192Permit","Permit\u2192Approval","Approval\u2192Install","Install progress","Done\u2192Inspect","Inspect\u2192PTO","PTO\u2192Approve","Total >90d"],"th":[">10d",">5d",">10d",">21d",">5d",">5d",">5d",">5d",">10d",">90d"],"sfa":[6,6,28,35,32,0,7,3,2,94],"lr":[0,0,4,5,23,0,0,1,3,37],"sun":[0,2,1,1,1,0,0,0,0,1],"cash":[0,0,0,0,0,0,0,0,0,0],"loan":[0,0,0,0,0,0,0,0,0,0],"prepaid":[0,0,0,0,0,0,0,0,0,0]},"m":[{"n":"Mary Ann Sante","t":"SFA","a":9,"w":36,"l":8,"h":0},{"n":"Genneva Arguelles","t":"SFA","a":102,"w":79,"l":16,"h":0},{"n":"Marielle Morla","t":"SFA","a":103,"w":35,"l":26,"h":0},{"n":"Allaiza Velasquez","t":"SFA","a":101,"w":85,"l":17,"h":0},{"n":"Francheska Alvarez","t":"SFA","a":110,"w":27,"l":25,"h":0},{"n":"Angelica Capili","t":"SFA","a":73,"w":0,"l":9,"h":0},{"n":"May Contestable","t":"SFA","a":78,"w":0,"l":9,"h":0},{"n":"Liza Cequena","t":"SFA","a":69,"w":0,"l":6,"h":0},{"n":"Dane Fullos","t":"SFA","a":27,"w":0,"l":0,"h":0},{"n":"Ara Pascual","t":"REG","a":1,"w":18,"l":17,"h":1},{"n":"Dianne Orias","t":"REG","a":34,"w":36,"l":10,"h":0},{"n":"Lester Belarmino","t":"REG","a":24,"w":58,"l":19,"h":0}]},{"label":"Mar 28\u2013Apr 3","short":"Mar 28","sfaNote":"With IPA, PPA, ILSFA Verified, and SS schedule - 7 projectsNot yet ILSFA Verified -  8 projectsNo Site Survey Schedule yet - 0 projectTotal: 15 Sales","regNote":"Sunrun - 4 (NTP Approved) (2 Not yet NTP Approved)Lightreach - 2 (NTP Approved) 1 Not yet NTP Approved)Total: 9 Sale","vol":{"active":{"sfa":729,"lr":47,"sun":18,"cash":1,"loan":1,"prepaid":0},"newSales":{"sfa":15,"lr":3,"sun":6,"cash":0,"loan":0,"prepaid":0},"installs":{"sfa":5,"lr":1,"sun":0,"cash":0,"loan":0,"prepaid":0},"ptos":{"sfa":5,"lr":1,"sun":0,"cash":0,"loan":0,"prepaid":0},"concerns":{"sfa":3,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"closed":{"sfa":351,"lr":127,"sun":7,"cash":7,"loan":12,"prepaid":0},"cancelled":{"sfa":139,"lr":73,"sun":5,"cash":2,"loan":2,"prepaid":0}},"active":796,"newSales":24,"installs":6,"ptos":6,"concerns":3,"closed":504,"cancelled":221,"cycleTotal":292,"ct":[10.44,18.61,141,42.11,38,1.4,33.27,1.55,13.2],"ctN":[0,0,0,0,0,0,0,0,0],"ctLR":[2,0,0,1,1,1,0,18,13],"ctSun":[5,6.5,12.79,0,0,0,0,0,0],"ctCash":[0,0,0,0,0,0,0,0,0],"ctLoan":[0,0,0,0,0,0,0,0,0],"ctPre":[0,0,0,0,0,0,0,0,0],"ctLRn":[0,0,0,0,0,0,0,0,0],"ctSunn":[0,0,0,0,0,0,0,0,0],"ctCashn":[0,0,0,0,0,0,0,0,0],"ctLoann":[0,0,0,0,0,0,0,0,0],"ctPren":[0,0,0,0,0,0,0,0,0],"pa":42.11,"risk":{"pcSfaN":1,"pcSfaD":18,"pcRegN":0,"pcRegD":0,"i1SfaN":19,"i1SfaD":27,"i1RegN":0,"i1RegD":0,"i2SfaN":0,"i2SfaD":0,"i2RegN":0,"i2RegD":0,"riSfaN":15,"riSfaD":54,"riRegN":4,"riRegD":4,"prSfaN":5,"prSfaD":37,"prRegN":3,"prRegD":3,"riNote":"SFA: 15/54 inspections failed then passed \u00b7 REG: 4/4 failed then passed","prNote":"SFA: 5/37 comments from COC stage \u00b7 REG: 3/3 approved with no rejection"},"p":{"stages":["Sale\u2192Survey","Survey\u2192Pipeline","Pipeline\u2192Permit","Permit\u2192Approval","Approval\u2192Install","Install progress","Done\u2192Inspect","Inspect\u2192PTO","PTO\u2192Approve","Total >90d"],"th":[">10d",">5d",">10d",">21d",">5d",">5d",">5d",">5d",">10d",">90d"],"sfa":[5,1,18,90,51,1,13,4,5,89],"lr":[0,0,3,4,22,0,0,1,2,36],"sun":[0,0,1,1,1,0,0,0,0,1],"cash":[0,0,0,0,0,0,0,0,0,0],"loan":[0,0,0,0,1,0,0,0,0,0],"prepaid":[0,0,0,0,0,0,0,0,0,0]},"m":[{"n":"Mary Ann Sante","t":"SFA","a":9,"w":36,"l":8,"h":0},{"n":"Genneva Arguelles","t":"SFA","a":97,"w":81,"l":18,"h":4},{"n":"Marielle Morla","t":"SFA","a":101,"w":35,"l":25,"h":4},{"n":"Allaiza Velasquez","t":"SFA","a":99,"w":85,"l":18,"h":8},{"n":"Francheska Alvarez","t":"SFA","a":109,"w":27,"l":25,"h":3},{"n":"Angelica Capili","t":"SFA","a":72,"w":0,"l":9,"h":4},{"n":"May Contestable","t":"SFA","a":77,"w":0,"l":8,"h":3},{"n":"Liza Cequena","t":"SFA","a":68,"w":0,"l":5,"h":3},{"n":"Dane Fullos","t":"SFA","a":39,"w":0,"l":1,"h":0},{"n":"Ara Pascual","t":"REG","a":1,"w":18,"l":17,"h":1},{"n":"Dianne Orias","t":"REG","a":38,"w":36,"l":10,"h":2},{"n":"Lester Belarmino","t":"REG","a":26,"w":59,"l":19,"h":2}]},{"label":"Apr 4\u2013Apr 17","short":"Apr 4","sfaNote":"With IPA, PPA, ILSFA Verified and SS schedule - 13 project\nNot yet ILSFA Verified -  19 projects\nNo Site Survey Schedule yet - 0 projects\nTotal: 32 Sales","regNote":"Sunrun - 0 (NTP Approved) (8 Not yet NTP Approved)\nLightreach - 5 (NTP Approved)\nTotal: 13 Sale ","vol":{"active":{"sfa":750,"lr":47,"sun":25,"cash":1,"loan":1,"prepaid":0},"newSales":{"sfa":32,"lr":5,"sun":8,"cash":0,"loan":0,"prepaid":0},"installs":{"sfa":32,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"ptos":{"sfa":23,"lr":4,"sun":0,"cash":0,"loan":0,"prepaid":0},"concerns":{"sfa":0,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"closed":{"sfa":375,"lr":129,"sun":7,"cash":7,"loan":12,"prepaid":0},"cancelled":{"sfa":140,"lr":77,"sun":9,"cash":2,"loan":2,"prepaid":0}},"active":824,"newSales":45,"installs":32,"ptos":27,"concerns":0,"closed":530,"cancelled":230,"cycleTotal":304,"ct":[19.89,37.87,122.45,42.87,46.09,1.62,11.9,10.12,11.7],"ctN":[47,23,11,31,31,32,21,17,23],"ctLR":[9.3,3,0,31,92,0,6,1,26.75],"ctLRn":[6,2,0,1,1,0,1,1,4],"ctSun":[7.87,2.2,9.85,7,0,0,0,0,0],"ctSunn":[9,8,7,1,0,0,0,0,0],"ctCash":[0,0,0,0,0,0,0,0,0],"ctCashn":[0,0,0,0,0,0,0,0,0],"ctLoan":[0,0,0,0,0,0,0,0,0],"ctLoann":[0,0,0,0,0,0,0,0,0],"ctPre":[0,0,0,0,0,0,0,0,0],"ctPren":[0,0,0,0,0,0,0,0,0],"pa":42.87,"risk":{"pcSfaN":8,"pcSfaD":32,"pcRegN":1,"pcRegD":2,"i1SfaN":44,"i1SfaD":44,"i1RegN":null,"i1RegD":null,"i2SfaN":20,"i2SfaD":33,"i2RegN":1,"i2RegD":2,"riSfaN":5,"riSfaD":30,"riRegN":0,"riRegD":1,"prSfaN":1,"prSfaD":26,"prRegN":0,"prRegD":4,"riNote":"","prNote":""},"p":{"stages":["Sale\u2192Survey","Survey\u2192Pipeline","Pipeline\u2192Permit","Permit\u2192Approval","Approval\u2192Install","Install progress","Done\u2192Inspect","Inspect\u2192PTO","PTO\u2192Approve","Total >90d"],"th":[">10d",">5d",">10d",">21d",">5d",">5d",">5d",">5d",">10d",">90d"],"sfa":[3,13,3,89,52,1,15,8,3,281],"lr":[0,2,3,4,18,0,0,1,0,28],"sun":[1,1,2,1,0,0,0,0,0,0],"cash":[0,0,0,0,0,0,0,0,0,0],"loan":[0,0,0,0,0,0,0,0,0,1],"prepaid":[0,0,0,0,0,0,0,0,0,0]},"m":[{"n":"Mary Ann Sante","t":"SFA","a":7,"w":38,"l":8},{"n":"Genneva Arguelles","t":"SFA","a":93,"w":84,"l":18,"h":5},{"n":"Marielle Morla","t":"SFA","a":99,"w":40,"l":25,"h":1},{"n":"Allaiza Velasquez","t":"SFA","a":96,"w":90,"l":18,"h":6},{"n":"Francheska Alvarez","t":"SFA","a":99,"w":36,"l":26,"h":3},{"n":"Angelica Capili","t":"SFA","a":71,"w":0,"l":11,"h":3},{"n":"May Contestable","t":"SFA","a":76,"w":0,"l":9,"h":3},{"n":"Liza Cequena","t":"SFA","a":74,"w":0,"l":5,"h":3},{"n":"Dane Fullos","t":"SFA","a":80,"w":0,"l":1},{"n":"Ara Pascual","t":"REG","a":1,"w":18,"l":17,"h":1},{"n":"Dianne Orias","t":"REG","a":37,"w":38,"l":16,"h":1},{"n":"Lester Belarmino","t":"REG","a":30,"w":59,"l":21,"h":4}]},{"label":"Apr 18\u2013Apr 24","short":"Apr 18","sfaNote":"With IPA, PPA, ILSFA Verified and SS schedule - 10 project\nNot yet ILSFA Verified - 13 projects\nNo Site Survey Schedule yet - 3 projects\nTotal: 26 Sales","regNote":"Sunrun - 0 (NTE Approved) (5 Not yet NTE Approved)\nLightreach - 0\nTotal: 5 Sale","vol":{"active":{"sfa":787,"lr":46,"sun":29,"cash":1,"loan":1,"prepaid":0},"newSales":{"sfa":26,"lr":0,"sun":5,"cash":0,"loan":0,"prepaid":0},"installs":{"sfa":17,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"ptos":{"sfa":18,"lr":0,"sun":0,"cash":0,"loan":1,"prepaid":0},"concerns":{"sfa":0,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"closed":{"sfa":376,"lr":130,"sun":7,"cash":7,"loan":12,"prepaid":0},"cancelled":{"sfa":142,"lr":79,"sun":10,"cash":2,"loan":2,"prepaid":0}},"active":864,"newSales":31,"installs":17,"ptos":19,"concerns":0,"closed":532,"cancelled":235,"cycleTotal":291.9,"ct":[16.87,11.5,98.25,34.38,68.15,1.25,15.56,18.5,9.1],"ctN":[26,8,4,13,20,17,17,13,18],"ctLR":[14,3.8,29.5,0,217,0,0,0,70],"ctLRn":[1,4,2,0,1,0,0,0,1],"ctSun":[6.4,3,14.5,57,0,0,0,0,0],"ctSunn":[6,3,2,1,0,0,0,0,0],"ctCash":[0,0,0,0,0,0,0,0,0],"ctCashn":[0,0,0,0,0,0,0,0,0],"ctLoan":[0,0,0,0,0,0,0,0,0],"ctLoann":[0,0,0,0,0,0,0,0,0],"ctPre":[0,0,0,0,0,0,0,0,0],"ctPren":[0,0,0,0,0,0,0,0,0],"pa":34.38,"risk":{"pcSfaN":3,"pcSfaD":13,"pcRegN":1,"pcRegD":1,"i1SfaN":4,"i1SfaD":4,"i1RegN":0,"i1RegD":0,"i2SfaN":3,"i2SfaD":9,"i2RegN":4,"i2RegD":6,"riSfaN":14,"riSfaD":62,"riRegN":0,"riRegD":1,"prSfaN":8,"prSfaD":45,"prRegN":2,"prRegD":4,"riNote":"14/62 failed\n8 Failed but passed\n2 ongoing failed\n4 rescheduled","prNote":"2/4 received correction"},"p":{"stages":["Sale\u2192Survey","Survey\u2192Pipeline","Pipeline\u2192Permit","Permit\u2192Approval","Approval\u2192Install","Install progress","Done\u2192Inspect","Inspect\u2192PTO","PTO\u2192Approve","Total >90d"],"th":[">10d",">5d",">10d",">21d",">5d",">5d",">5d",">5d",">10d",">90d"],"sfa":[4,25,14,83,40,0,18,3,2,81],"lr":[1,1,4,5,18,0,0,1,1,31],"sun":[1,1,1,3,0,0,0,0,0,0],"cash":[0,0,0,0,0,0,0,0,0,1],"loan":[0,0,0,0,1,0,0,0,0,1],"prepaid":[0,0,0,0,0,0,0,0,0,0]},"m":[{"n":"Mary Ann Sante","t":"SFA","a":7,"w":38,"l":8,"h":0},{"n":"Genneva Arguelles","t":"SFA","a":93,"w":84,"l":18,"h":5},{"n":"Marielle Morla","t":"SFA","a":99,"w":40,"l":25,"h":1},{"n":"Allaiza Velasquez","t":"SFA","a":96,"w":90,"l":18,"h":6},{"n":"Francheska Alvarez","t":"SFA","a":99,"w":37,"l":25,"h":3},{"n":"Angelica Capili","t":"SFA","a":75,"w":0,"l":11,"h":8},{"n":"May Contestable","t":"SFA","a":85,"w":0,"l":10,"h":2},{"n":"Liza Cequena","t":"SFA","a":84,"w":0,"l":6,"h":3},{"n":"Dane Fullos","t":"SFA","a":84,"w":0,"l":1,"h":0},{"n":"Ara Pascual","t":"REG","a":1,"w":18,"l":17,"h":1},{"n":"Dianne Orias","t":"REG","a":38,"w":38,"l":19,"h":1},{"n":"Lester Belarmino","t":"REG","a":34,"w":60,"l":22,"h":3}]}],cw=7,CI={},st=null,isEd=false,pin=null,pb='',pm='set';
+/*W_DATA_LEN=8*//*W_DATA_START*/let W=[{"label":"Feb 23\u2013Mar 1","short":"Feb 23","sfaNote":"SFA sales notes unavailable","regNote":"Regular sales notes unavailable","vol":{"active":{"sfa":872,"lr":69,"sun":2,"cash":1,"loan":3,"prepaid":0},"newSales":{"sfa":35,"lr":1,"sun":0,"cash":0,"loan":0,"prepaid":0},"installs":{"sfa":11,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"ptos":{"sfa":16,"lr":2,"sun":0,"cash":0,"loan":1,"prepaid":0},"concerns":{"sfa":3,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"closed":{"sfa":164,"lr":109,"sun":7,"cash":0,"loan":0,"prepaid":0},"cancelled":{"sfa":105,"lr":67,"sun":1,"cash":0,"loan":0,"prepaid":0}},"active":947,"newSales":36,"installs":11,"ptos":19,"concerns":3,"closed":280,"cancelled":173,"cycleTotal":253,"ct":[24.2,9.8,237,60,128,0.5,29.26,3.47,5.62],"ctN":[0,0,0,0,0,0,0,0,0],"ctLR":[0,0,0,90.33,0,0,55,1,18.5],"ctSun":[0,0,7,0,0,0,0,0,0],"ctCash":[0,0,0,0,0,0,0,0,0],"ctLoan":[0,0,0,0,0,0,54,1,14],"ctPre":[0,0,0,0,0,0,0,0,0],"ctLRn":[0,0,0,0,0,0,0,0,0],"ctSunn":[0,0,0,0,0,0,0,0,0],"ctCashn":[0,0,0,0,0,0,0,0,0],"ctLoann":[0,0,0,0,0,0,0,0,0],"ctPren":[0,0,0,0,0,0,0,0,0],"pa":60,"risk":{"pcSfaN":null,"pcSfaD":null,"pcRegN":null,"pcRegD":null,"i1SfaN":null,"i1SfaD":null,"i1RegN":null,"i1RegD":null,"i2SfaN":null,"i2SfaD":null,"i2RegN":null,"i2RegD":null,"riSfaN":null,"riSfaD":null,"riRegN":null,"riRegD":null,"prSfaN":null,"prSfaD":null,"prRegN":null,"prRegD":null,"riNote":"","prNote":""},"p":null,"m":null},{"label":"Feb 28\u2013Mar 6","short":"Feb 28","sfaNote":"SFA sales notes unavailable","regNote":"Regular sales notes unavailable","vol":{"active":{"sfa":885,"lr":72,"sun":2,"cash":1,"loan":3,"prepaid":0},"newSales":{"sfa":14,"lr":1,"sun":0,"cash":0,"loan":0,"prepaid":0},"installs":{"sfa":8,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"ptos":{"sfa":8,"lr":2,"sun":0,"cash":0,"loan":1,"prepaid":0},"concerns":{"sfa":6,"lr":3,"sun":0,"cash":0,"loan":0,"prepaid":0},"closed":{"sfa":320,"lr":137,"sun":7,"cash":0,"loan":0,"prepaid":0},"cancelled":{"sfa":116,"lr":72,"sun":1,"cash":0,"loan":0,"prepaid":0}},"active":963,"newSales":15,"installs":8,"ptos":11,"concerns":9,"closed":464,"cancelled":189,"cycleTotal":241,"ct":[18.9,7.5,136.13,36.28,68.9,0.5,17.5,2,8.5],"ctN":[0,0,0,0,0,0,0,0,0],"ctLR":[6,0,0,0,0,0,0,0,8],"ctSun":[0,5,0,0,0,0,0,0,0],"ctCash":[0,0,0,0,0,0,0,0,0],"ctLoan":[0,0,0,0,0,0,0,0,10],"ctPre":[0,0,0,0,0,0,0,0,0],"ctLRn":[0,0,0,0,0,0,0,0,0],"ctSunn":[0,0,0,0,0,0,0,0,0],"ctCashn":[0,0,0,0,0,0,0,0,0],"ctLoann":[0,0,0,0,0,0,0,0,0],"ctPren":[0,0,0,0,0,0,0,0,0],"pa":36.28,"risk":{"pcSfaN":null,"pcSfaD":null,"pcRegN":null,"pcRegD":null,"i1SfaN":null,"i1SfaD":null,"i1RegN":null,"i1RegD":null,"i2SfaN":null,"i2SfaD":null,"i2RegN":null,"i2RegD":null,"riSfaN":null,"riSfaD":null,"riRegN":null,"riRegD":null,"prSfaN":null,"prSfaD":null,"prRegN":null,"prRegD":null,"riNote":"","prNote":""},"p":null,"m":null},{"label":"Mar 7\u2013Mar 13","short":"Mar 7","sfaNote":"SFA sales notes unavailable","regNote":"Regular sales notes unavailable","vol":{"active":{"sfa":890,"lr":63,"sun":8,"cash":1,"loan":2,"prepaid":0},"newSales":{"sfa":9,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"installs":{"sfa":9,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"ptos":{"sfa":7,"lr":0,"sun":0,"cash":0,"loan":1,"prepaid":0},"concerns":{"sfa":0,"lr":1,"sun":0,"cash":0,"loan":0,"prepaid":0},"closed":{"sfa":320,"lr":113,"sun":7,"cash":7,"loan":11,"prepaid":0},"cancelled":{"sfa":125,"lr":70,"sun":1,"cash":2,"loan":2,"prepaid":0}},"active":964,"newSales":9,"installs":9,"ptos":8,"concerns":1,"closed":458,"cancelled":200,"cycleTotal":235,"ct":[11.3,7.2,131,90.75,62.5,4.5,25.3,3.4,6],"ctN":[0,0,0,0,0,0,0,0,0],"ctLR":[0,0,19,0,0,0,96.5,1,0],"ctSun":[19.8,3,0,0,0,0,0,0,0],"ctCash":[0,0,0,0,0,0,0,0,0],"ctLoan":[0,0,0,0,0,0,0,0,0],"ctPre":[0,0,0,0,0,0,0,0,0],"ctLRn":[0,0,0,0,0,0,0,0,0],"ctSunn":[0,0,0,0,0,0,0,0,0],"ctCashn":[0,0,0,0,0,0,0,0,0],"ctLoann":[0,0,0,0,0,0,0,0,0],"ctPren":[0,0,0,0,0,0,0,0,0],"pa":90.75,"risk":{"pcSfaN":null,"pcSfaD":null,"pcRegN":null,"pcRegD":null,"i1SfaN":null,"i1SfaD":null,"i1RegN":null,"i1RegD":null,"i2SfaN":null,"i2SfaD":null,"i2RegN":null,"i2RegD":null,"riSfaN":null,"riSfaD":null,"riRegN":null,"riRegD":null,"prSfaN":null,"prSfaD":null,"prRegN":null,"prRegD":null,"riNote":"","prNote":""},"p":null,"m":[{"n":"Mary Ann Sante","t":"SFA","a":9,"w":36,"l":8,"h":0},{"n":"Genneva Arguelles","t":"SFA","a":101,"w":79,"l":16,"h":0},{"n":"Marielle Morla","t":"SFA","a":102,"w":35,"l":25,"h":0},{"n":"Allaiza Velasquez","t":"SFA","a":102,"w":85,"l":17,"h":0},{"n":"Francheska Alvarez","t":"SFA","a":111,"w":26,"l":24,"h":0},{"n":"Angelica Capili","t":"SFA","a":73,"w":0,"l":7,"h":0},{"n":"May Contestable","t":"SFA","a":78,"w":0,"l":9,"h":0},{"n":"Liza Cequena","t":"SFA","a":72,"w":0,"l":4,"h":0},{"n":"Dane Fullos","t":"SFA","a":8,"w":0,"l":0,"h":0},{"n":"Ara Pascual","t":"REG","a":1,"w":19,"l":17,"h":0},{"n":"Dianne Orias","t":"REG","a":31,"w":36,"l":9,"h":0},{"n":"Lester Belarmino","t":"REG","a":26,"w":56,"l":14,"h":0}]},{"label":"Mar 14\u2013Mar 20","short":"Mar 14","sfaNote":"SFA sales notes unavailable","regNote":"Regular sales notes unavailable","vol":{"active":{"sfa":702,"lr":51,"sun":10,"cash":1,"loan":1,"prepaid":0},"newSales":{"sfa":7,"lr":0,"sun":5,"cash":0,"loan":0,"prepaid":0},"installs":{"sfa":5,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"ptos":{"sfa":5,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"concerns":{"sfa":0,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"closed":{"sfa":348,"lr":123,"sun":7,"cash":7,"loan":12,"prepaid":0},"cancelled":{"sfa":133,"lr":71,"sun":1,"cash":2,"loan":2,"prepaid":0}},"active":765,"newSales":12,"installs":5,"ptos":5,"concerns":0,"closed":497,"cancelled":209,"cycleTotal":272,"ct":[44.17,16.24,139.8,9.6,142.8,3.9,32.95,2.7,7.5],"ctN":[0,0,0,0,0,0,0,0,0],"ctLR":[0,0,0,0,0,0,78.96,1,0],"ctSun":[4.06,2.4,0,0,0,0,0,0,0],"ctCash":[0,0,0,0,0,0,0,0,0],"ctLoan":[0,0,0,0,0,0,0,0,0],"ctPre":[0,0,0,0,0,0,0,0,0],"ctLRn":[0,0,0,0,0,0,0,0,0],"ctSunn":[0,0,0,0,0,0,0,0,0],"ctCashn":[0,0,0,0,0,0,0,0,0],"ctLoann":[0,0,0,0,0,0,0,0,0],"ctPren":[0,0,0,0,0,0,0,0,0],"pa":9.6,"risk":{"pcSfaN":null,"pcSfaD":null,"pcRegN":null,"pcRegD":null,"i1SfaN":null,"i1SfaD":null,"i1RegN":null,"i1RegD":null,"i2SfaN":null,"i2SfaD":null,"i2RegN":null,"i2RegD":null,"riSfaN":null,"riSfaD":null,"riRegN":null,"riRegD":null,"prSfaN":null,"prSfaD":null,"prRegN":null,"prRegD":null,"riNote":"","prNote":""},"p":null,"m":[{"n":"Mary Ann Sante","t":"SFA","a":9,"w":36,"l":8,"h":0},{"n":"Genneva Arguelles","t":"SFA","a":101,"w":79,"l":17,"h":0},{"n":"Marielle Morla","t":"SFA","a":102,"w":35,"l":26,"h":0},{"n":"Allaiza Velasquez","t":"SFA","a":101,"w":85,"l":17,"h":0},{"n":"Francheska Alvarez","t":"SFA","a":109,"w":26,"l":26,"h":0},{"n":"Angelica Capili","t":"SFA","a":72,"w":0,"l":9,"h":4},{"n":"May Contestable","t":"SFA","a":78,"w":0,"l":9,"h":0},{"n":"Liza Cequena","t":"SFA","a":72,"w":0,"l":4,"h":0},{"n":"Dane Fullos","t":"SFA","a":10,"w":0,"l":0,"h":0},{"n":"Ara Pascual","t":"REG","a":1,"w":19,"l":17,"h":0},{"n":"Dianne Orias","t":"REG","a":32,"w":36,"l":9,"h":0},{"n":"Lester Belarmino","t":"REG","a":27,"w":56,"l":15,"h":0}]},{"label":"Mar 21\u2013Mar 27","short":"Mar 21","sfaNote":"With IPA, PPA, ILSFA Verified and SS schedule - 4 projects\nNot yet ILSFA Verified - 7 projects\nNo Site Survey Schedule yet - 2 projects\nTotal: 11 Sales","regNote":"Sunrun - 7 (Not yet NTP approved)\nTotal: 7 Sales","vol":{"active":{"sfa":719,"lr":46,"sun":15,"cash":1,"loan":1,"prepaid":0},"newSales":{"sfa":11,"lr":0,"sun":7,"cash":0,"loan":0,"prepaid":0},"installs":{"sfa":12,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"ptos":{"sfa":14,"lr":1,"sun":0,"cash":0,"loan":0,"prepaid":0},"concerns":{"sfa":2,"lr":1,"sun":0,"cash":0,"loan":0,"prepaid":0},"closed":{"sfa":349,"lr":126,"sun":7,"cash":7,"loan":12,"prepaid":0},"cancelled":{"sfa":134,"lr":73,"sun":5,"cash":2,"loan":2,"prepaid":0}},"active":782,"newSales":18,"installs":12,"ptos":15,"concerns":3,"closed":501,"cancelled":216,"cycleTotal":252,"ct":[16.19,15.15,174.25,32.92,59.9,0.8,26.6,1.3,13.7],"ctN":[0,0,0,0,0,0,0,0,0],"ctLR":[0,0,0,0,0,0,150.5,2,14],"ctSun":[7.86,1,0,0,0,0,0,0,0],"ctCash":[0,0,0,0,0,0,0,0,0],"ctLoan":[0,0,0,0,1,0,0,0,0],"ctPre":[0,0,0,0,0,0,0,0,0],"ctLRn":[0,0,0,0,0,0,0,0,0],"ctSunn":[0,0,0,0,0,0,0,0,0],"ctCashn":[0,0,0,0,0,0,0,0,0],"ctLoann":[0,0,0,0,0,0,0,0,0],"ctPren":[0,0,0,0,0,0,0,0,0],"pa":32.92,"risk":{"pcSfaN":null,"pcSfaD":null,"pcRegN":null,"pcRegD":null,"i1SfaN":null,"i1SfaD":null,"i1RegN":null,"i1RegD":null,"i2SfaN":null,"i2SfaD":null,"i2RegN":null,"i2RegD":null,"riSfaN":null,"riSfaD":null,"riRegN":null,"riRegD":null,"prSfaN":null,"prSfaD":null,"prRegN":null,"prRegD":null,"riNote":"","prNote":""},"p":{"stages":["Sale\u2192Survey","Survey\u2192Pipeline","Pipeline\u2192Permit","Permit\u2192Approval","Approval\u2192Install","Install progress","Done\u2192Inspect","Inspect\u2192PTO","PTO\u2192Approve","Total >90d"],"th":[">10d",">5d",">10d",">21d",">5d",">5d",">5d",">5d",">10d",">90d"],"sfa":[6,6,28,35,32,0,7,3,2,94],"lr":[0,0,4,5,23,0,0,1,3,37],"sun":[0,2,1,1,1,0,0,0,0,1],"cash":[0,0,0,0,0,0,0,0,0,0],"loan":[0,0,0,0,0,0,0,0,0,0],"prepaid":[0,0,0,0,0,0,0,0,0,0]},"m":[{"n":"Mary Ann Sante","t":"SFA","a":9,"w":36,"l":8,"h":0},{"n":"Genneva Arguelles","t":"SFA","a":102,"w":79,"l":16,"h":0},{"n":"Marielle Morla","t":"SFA","a":103,"w":35,"l":26,"h":0},{"n":"Allaiza Velasquez","t":"SFA","a":101,"w":85,"l":17,"h":0},{"n":"Francheska Alvarez","t":"SFA","a":110,"w":27,"l":25,"h":0},{"n":"Angelica Capili","t":"SFA","a":73,"w":0,"l":9,"h":0},{"n":"May Contestable","t":"SFA","a":78,"w":0,"l":9,"h":0},{"n":"Liza Cequena","t":"SFA","a":69,"w":0,"l":6,"h":0},{"n":"Dane Fullos","t":"SFA","a":27,"w":0,"l":0,"h":0},{"n":"Ara Pascual","t":"REG","a":1,"w":18,"l":17,"h":1},{"n":"Dianne Orias","t":"REG","a":34,"w":36,"l":10,"h":0},{"n":"Lester Belarmino","t":"REG","a":24,"w":58,"l":19,"h":0}]},{"label":"Mar 28\u2013Apr 3","short":"Mar 28","sfaNote":"With IPA, PPA, ILSFA Verified, and SS schedule - 7 projectsNot yet ILSFA Verified -  8 projectsNo Site Survey Schedule yet - 0 projectTotal: 15 Sales","regNote":"Sunrun - 4 (NTP Approved) (2 Not yet NTP Approved)Lightreach - 2 (NTP Approved) 1 Not yet NTP Approved)Total: 9 Sale","vol":{"active":{"sfa":729,"lr":47,"sun":18,"cash":1,"loan":1,"prepaid":0},"newSales":{"sfa":15,"lr":3,"sun":6,"cash":0,"loan":0,"prepaid":0},"installs":{"sfa":5,"lr":1,"sun":0,"cash":0,"loan":0,"prepaid":0},"ptos":{"sfa":5,"lr":1,"sun":0,"cash":0,"loan":0,"prepaid":0},"concerns":{"sfa":3,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"closed":{"sfa":351,"lr":127,"sun":7,"cash":7,"loan":12,"prepaid":0},"cancelled":{"sfa":139,"lr":73,"sun":5,"cash":2,"loan":2,"prepaid":0}},"active":796,"newSales":24,"installs":6,"ptos":6,"concerns":3,"closed":504,"cancelled":221,"cycleTotal":292,"ct":[10.44,18.61,141,42.11,38,1.4,33.27,1.55,13.2],"ctN":[0,0,0,0,0,0,0,0,0],"ctLR":[2,0,0,1,1,1,0,18,13],"ctSun":[5,6.5,12.79,0,0,0,0,0,0],"ctCash":[0,0,0,0,0,0,0,0,0],"ctLoan":[0,0,0,0,0,0,0,0,0],"ctPre":[0,0,0,0,0,0,0,0,0],"ctLRn":[0,0,0,0,0,0,0,0,0],"ctSunn":[0,0,0,0,0,0,0,0,0],"ctCashn":[0,0,0,0,0,0,0,0,0],"ctLoann":[0,0,0,0,0,0,0,0,0],"ctPren":[0,0,0,0,0,0,0,0,0],"pa":42.11,"risk":{"pcSfaN":1,"pcSfaD":18,"pcRegN":0,"pcRegD":0,"i1SfaN":19,"i1SfaD":27,"i1RegN":0,"i1RegD":0,"i2SfaN":0,"i2SfaD":0,"i2RegN":0,"i2RegD":0,"riSfaN":15,"riSfaD":54,"riRegN":4,"riRegD":4,"prSfaN":5,"prSfaD":37,"prRegN":3,"prRegD":3,"riNote":"SFA: 15/54 inspections failed then passed \u00b7 REG: 4/4 failed then passed","prNote":"SFA: 5/37 comments from COC stage \u00b7 REG: 3/3 approved with no rejection"},"p":{"stages":["Sale\u2192Survey","Survey\u2192Pipeline","Pipeline\u2192Permit","Permit\u2192Approval","Approval\u2192Install","Install progress","Done\u2192Inspect","Inspect\u2192PTO","PTO\u2192Approve","Total >90d"],"th":[">10d",">5d",">10d",">21d",">5d",">5d",">5d",">5d",">10d",">90d"],"sfa":[5,1,18,90,51,1,13,4,5,89],"lr":[0,0,3,4,22,0,0,1,2,36],"sun":[0,0,1,1,1,0,0,0,0,1],"cash":[0,0,0,0,0,0,0,0,0,0],"loan":[0,0,0,0,1,0,0,0,0,0],"prepaid":[0,0,0,0,0,0,0,0,0,0]},"m":[{"n":"Mary Ann Sante","t":"SFA","a":9,"w":36,"l":8,"h":0},{"n":"Genneva Arguelles","t":"SFA","a":97,"w":81,"l":18,"h":4},{"n":"Marielle Morla","t":"SFA","a":101,"w":35,"l":25,"h":4},{"n":"Allaiza Velasquez","t":"SFA","a":99,"w":85,"l":18,"h":8},{"n":"Francheska Alvarez","t":"SFA","a":109,"w":27,"l":25,"h":3},{"n":"Angelica Capili","t":"SFA","a":72,"w":0,"l":9,"h":4},{"n":"May Contestable","t":"SFA","a":77,"w":0,"l":8,"h":3},{"n":"Liza Cequena","t":"SFA","a":68,"w":0,"l":5,"h":3},{"n":"Dane Fullos","t":"SFA","a":39,"w":0,"l":1,"h":0},{"n":"Ara Pascual","t":"REG","a":1,"w":18,"l":17,"h":1},{"n":"Dianne Orias","t":"REG","a":38,"w":36,"l":10,"h":2},{"n":"Lester Belarmino","t":"REG","a":26,"w":59,"l":19,"h":2}]},{"label":"Apr 4\u2013Apr 17","short":"Apr 4","sfaNote":"With IPA, PPA, ILSFA Verified and SS schedule - 13 project\nNot yet ILSFA Verified -  19 projects\nNo Site Survey Schedule yet - 0 projects\nTotal: 32 Sales","regNote":"Sunrun - 0 (NTP Approved) (8 Not yet NTP Approved)\nLightreach - 5 (NTP Approved)\nTotal: 13 Sale ","vol":{"active":{"sfa":750,"lr":47,"sun":25,"cash":1,"loan":1,"prepaid":0},"newSales":{"sfa":32,"lr":5,"sun":8,"cash":0,"loan":0,"prepaid":0},"installs":{"sfa":32,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"ptos":{"sfa":23,"lr":4,"sun":0,"cash":0,"loan":0,"prepaid":0},"concerns":{"sfa":0,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"closed":{"sfa":375,"lr":129,"sun":7,"cash":7,"loan":12,"prepaid":0},"cancelled":{"sfa":140,"lr":77,"sun":9,"cash":2,"loan":2,"prepaid":0}},"active":824,"newSales":45,"installs":32,"ptos":27,"concerns":0,"closed":530,"cancelled":230,"cycleTotal":304,"ct":[19.89,37.87,122.45,42.87,46.09,1.62,11.9,10.12,11.7],"ctN":[47,23,11,31,31,32,21,17,23],"ctLR":[9.3,3,0,31,92,0,6,1,26.75],"ctLRn":[6,2,0,1,1,0,1,1,4],"ctSun":[7.87,2.2,9.85,7,0,0,0,0,0],"ctSunn":[9,8,7,1,0,0,0,0,0],"ctCash":[0,0,0,0,0,0,0,0,0],"ctCashn":[0,0,0,0,0,0,0,0,0],"ctLoan":[0,0,0,0,0,0,0,0,0],"ctLoann":[0,0,0,0,0,0,0,0,0],"ctPre":[0,0,0,0,0,0,0,0,0],"ctPren":[0,0,0,0,0,0,0,0,0],"pa":42.87,"risk":{"pcSfaN":8,"pcSfaD":32,"pcRegN":1,"pcRegD":2,"i1SfaN":44,"i1SfaD":44,"i1RegN":null,"i1RegD":null,"i2SfaN":20,"i2SfaD":33,"i2RegN":1,"i2RegD":2,"riSfaN":5,"riSfaD":30,"riRegN":0,"riRegD":1,"prSfaN":1,"prSfaD":26,"prRegN":0,"prRegD":4,"riNote":"","prNote":""},"p":{"stages":["Sale\u2192Survey","Survey\u2192Pipeline","Pipeline\u2192Permit","Permit\u2192Approval","Approval\u2192Install","Install progress","Done\u2192Inspect","Inspect\u2192PTO","PTO\u2192Approve","Total >90d"],"th":[">10d",">5d",">10d",">21d",">5d",">5d",">5d",">5d",">10d",">90d"],"sfa":[3,13,3,89,52,1,15,8,3,281],"lr":[0,2,3,4,18,0,0,1,0,28],"sun":[1,1,2,1,0,0,0,0,0,0],"cash":[0,0,0,0,0,0,0,0,0,0],"loan":[0,0,0,0,0,0,0,0,0,1],"prepaid":[0,0,0,0,0,0,0,0,0,0]},"m":[{"n":"Mary Ann Sante","t":"SFA","a":7,"w":38,"l":8},{"n":"Genneva Arguelles","t":"SFA","a":93,"w":84,"l":18,"h":5},{"n":"Marielle Morla","t":"SFA","a":99,"w":40,"l":25,"h":1},{"n":"Allaiza Velasquez","t":"SFA","a":96,"w":90,"l":18,"h":6},{"n":"Francheska Alvarez","t":"SFA","a":99,"w":36,"l":26,"h":3},{"n":"Angelica Capili","t":"SFA","a":71,"w":0,"l":11,"h":3},{"n":"May Contestable","t":"SFA","a":76,"w":0,"l":9,"h":3},{"n":"Liza Cequena","t":"SFA","a":74,"w":0,"l":5,"h":3},{"n":"Dane Fullos","t":"SFA","a":80,"w":0,"l":1},{"n":"Ara Pascual","t":"REG","a":1,"w":18,"l":17,"h":1},{"n":"Dianne Orias","t":"REG","a":37,"w":38,"l":16,"h":1},{"n":"Lester Belarmino","t":"REG","a":30,"w":59,"l":21,"h":4}]},{"label":"Apr 18\u2013Apr 24","short":"Apr 18","sfaNote":"With IPA, PPA, ILSFA Verified and SS schedule - 10 project\nNot yet ILSFA Verified - 13 projects\nNo Site Survey Schedule yet - 3 projects\nTotal: 26 Sales","regNote":"Sunrun - 0 (NTE Approved) (5 Not yet NTE Approved)\nLightreach - 0\nTotal: 5 Sale","vol":{"active":{"sfa":787,"lr":46,"sun":29,"cash":1,"loan":1,"prepaid":0},"newSales":{"sfa":26,"lr":0,"sun":5,"cash":0,"loan":0,"prepaid":0},"installs":{"sfa":17,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"ptos":{"sfa":18,"lr":0,"sun":0,"cash":0,"loan":1,"prepaid":0},"concerns":{"sfa":0,"lr":0,"sun":0,"cash":0,"loan":0,"prepaid":0},"closed":{"sfa":376,"lr":130,"sun":7,"cash":7,"loan":12,"prepaid":0},"cancelled":{"sfa":142,"lr":79,"sun":10,"cash":2,"loan":2,"prepaid":0}},"active":864,"newSales":31,"installs":17,"ptos":19,"concerns":0,"closed":532,"cancelled":235,"cycleTotal":291.9,"ct":[16.87,11.5,98.25,34.38,68.15,1.25,15.56,18.5,9.1],"ctN":[26,8,4,13,20,17,17,13,18],"ctLR":[14,3.8,29.5,0,217,0,0,0,70],"ctLRn":[1,4,2,0,1,0,0,0,1],"ctSun":[6.4,3,14.5,57,0,0,0,0,0],"ctSunn":[6,3,2,1,0,0,0,0,0],"ctCash":[0,0,0,0,0,0,0,0,0],"ctCashn":[0,0,0,0,0,0,0,0,0],"ctLoan":[0,0,0,0,0,0,0,0,0],"ctLoann":[0,0,0,0,0,0,0,0,0],"ctPre":[0,0,0,0,0,0,0,0,0],"ctPren":[0,0,0,0,0,0,0,0,0],"pa":34.38,"risk":{"pcSfaN":3,"pcSfaD":13,"pcRegN":1,"pcRegD":1,"i1SfaN":4,"i1SfaD":4,"i1RegN":0,"i1RegD":0,"i2SfaN":3,"i2SfaD":9,"i2RegN":4,"i2RegD":6,"riSfaN":14,"riSfaD":62,"riRegN":0,"riRegD":1,"prSfaN":8,"prSfaD":45,"prRegN":2,"prRegD":4,"riNote":"14/62 failed\n8 Failed but passed\n2 ongoing failed\n4 rescheduled","prNote":"2/4 received correction"},"p":{"stages":["Sale\u2192Survey","Survey\u2192Pipeline","Pipeline\u2192Permit","Permit\u2192Approval","Approval\u2192Install","Install progress","Done\u2192Inspect","Inspect\u2192PTO","PTO\u2192Approve","Total >90d"],"th":[">10d",">5d",">10d",">21d",">5d",">5d",">5d",">5d",">10d",">90d"],"sfa":[4,25,14,83,40,0,18,3,2,81],"lr":[1,1,4,5,18,0,0,1,1,31],"sun":[1,1,1,3,0,0,0,0,0,0],"cash":[0,0,0,0,0,0,0,0,0,1],"loan":[0,0,0,0,1,0,0,0,0,1],"prepaid":[0,0,0,0,0,0,0,0,0,0]},"m":[{"n":"Mary Ann Sante","t":"SFA","a":7,"w":38,"l":8,"h":0},{"n":"Genneva Arguelles","t":"SFA","a":93,"w":84,"l":18,"h":5},{"n":"Marielle Morla","t":"SFA","a":99,"w":40,"l":25,"h":1},{"n":"Allaiza Velasquez","t":"SFA","a":96,"w":90,"l":18,"h":6},{"n":"Francheska Alvarez","t":"SFA","a":99,"w":37,"l":25,"h":3},{"n":"Angelica Capili","t":"SFA","a":75,"w":0,"l":11,"h":8},{"n":"May Contestable","t":"SFA","a":85,"w":0,"l":10,"h":2},{"n":"Liza Cequena","t":"SFA","a":84,"w":0,"l":6,"h":3},{"n":"Dane Fullos","t":"SFA","a":84,"w":0,"l":1,"h":0},{"n":"Ara Pascual","t":"REG","a":1,"w":18,"l":17,"h":1},{"n":"Dianne Orias","t":"REG","a":38,"w":38,"l":19,"h":1},{"n":"Lester Belarmino","t":"REG","a":34,"w":60,"l":22,"h":3}]}],cw=7,/*W_DATA_END*/CI={},st=null,isEd=false,pin=null,pb='',pm='set';
 
 function pct(n,d){return(n!=null&&d!=null&&d>0)?Math.round(n/d*100):null;}
 function bgc(v){return v==null?'bgm':v>=70?'bgr':v>=20?'bga':'bgg';}
@@ -833,25 +1169,32 @@ function exportData(){
   URL.revokeObjectURL(a.href);
 }
 function exportShareable(){
-  const src=document.documentElement.outerHTML;
   const dataJson=JSON.stringify(W);
   const pinJson=JSON.stringify(pin);
-  // Bake current W data directly in, bypassing SEED and localStorage
-  let out=src.replace(
-    /let W=JSON\.parse\(JSON\.stringify\(SEED\)\),cw=\d+,/,
-    `let W=${dataJson},cw=${W.length-1},`
-  );
-  // Replace ld() so it doesn't overwrite with empty localStorage on other browsers
-  out=out.replace(
-    /function ld\(\)\{[^}]+\}/,
-    `function ld(){try{const d=localStorage.getItem('crm6');if(d){const x=JSON.parse(d);if(x.w&&x.w.length>=W.length){W=x.w;}if(x.p)pin=x.p;}}catch(e){}}`
-  );
-  // Set pin
-  out=out.replace('ld();\nif(pin)', `pin=${pinJson};\nif(pin)`);
+  const cwVal=W.length-1;
+  // Use the unique marker to split and replace W data reliably
+  const marker='/*W_DATA_START*/';
+  let src=document.documentElement.outerHTML;
+  let out;
+  if(src.includes(marker)){
+    // Split on marker - everything between marker and W_DATA_END is replaced
+    const parts=src.split('/*W_DATA_END*/');
+    const before=parts[0].split(marker)[0];
+    out=before+marker+'let W='+dataJson+',cw='+(W.length-1)+',' + '/*W_DATA_END*/'+parts[1];
+  } else {
+    // Fallback: find "let W=" and replace until next ",cw=N,"
+    const wIdx=src.indexOf('let W=');
+    let depth=0,i=wIdx+6;
+    while(i<src.length){if(src[i]==='[')depth++;else if(src[i]===']'){depth--;if(depth===0){i++;break;}}i++;}
+    const cwEnd=src.indexOf(',',src.indexOf(',cw=',i)+4)+1;
+    out=src.slice(0,wIdx)+'let W='+dataJson+',cw='+(W.length-1)+','+src.slice(cwEnd);
+  }
+  // Fix pin
+  out=out.replace(/pin=[^;\n]+;(\nif\(pin\))/,'pin='+pinJson+';$1');
   const blob=new Blob([out],{type:'text/html'});
   const a=document.createElement('a');
   a.href=URL.createObjectURL(blob);
-  a.download=`CRM_Report_Sunrise_${new Date().toISOString().slice(0,10)}.html`;
+  a.download='CRM_Report_Sunrise_'+new Date().toISOString().slice(0,10)+'.html';
   a.click();
   URL.revokeObjectURL(a.href);
 }
@@ -1017,5 +1360,6 @@ function renderLive(deals){
 }
 
 </script>
-</body>
-</html>
+
+
+<scribe-shadow id="crxjs-ext" data-crx="okfkdaglfjjjfefdcppliegebpoegaii" style="position: fixed; width: 0px; height: 0px; top: 0px; left: 0px; z-index: 2147483647; overflow: visible; visibility: visible;"></scribe-shadow></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
