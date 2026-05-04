@@ -404,7 +404,7 @@ const SEED=[
     p:null,m:null}
 ];
 
-let W=JSON.parse(JSON.stringify(SEED)),cw=6,CI={},st=null,isEd=false,pin=null,pb='',pm='set';
+let W=JSON.parse(JSON.stringify(SEED)),cw=W.length-1,CI={},st=null,isEd=false,pin=null,pb='',pm='set';
 
 function pct(n,d){return(n!=null&&d!=null&&d>0)?Math.round(n/d*100):null;}
 function bgc(v){return v==null?'bgm':v>=70?'bgr':v>=20?'bga':'bgg';}
