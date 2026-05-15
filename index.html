@@ -398,6 +398,19 @@ async function refreshFromCRM(){
       week.ctPre = ctPre; week.ctPren = ctPren;
     }
 
+    // ── PIPELINE THRESHOLDS ──
+    // d.thresholds structure: {sfa:{saleToSurvey:N,...}, lr:{...}, ..., prepaid:{...}}
+    // Map into week.p[fin][stageIndex] using the canonical 10-stage order.
+    if(d.thresholds){
+      const STAGE_KEYS = ['saleToSurvey','surveyToPipeline','pipelineToPermit','permitToApproval','approvalToInstall','installProgress','doneToInspect','inspectToPto','ptoToApprove','totalSaleToPto'];
+      if(!week.p || !week.p.stages){
+        week.p = JSON.parse(JSON.stringify(DP));
+      }
+      ['sfa','lr','sun','cash','loan','prepaid'].forEach(fin => {
+        week.p[fin] = STAGE_KEYS.map(k => (d.thresholds[fin] || {})[k] || 0);
+      });
+    }
+
     sv();
     rw(cw);
     btn.innerHTML = '✅ Synced!';
@@ -552,7 +565,7 @@ function rw(wi){
     <div class="card-header"><span class="card-title">Stage cycle times</span><span class="card-sub">days per stage</span></div>
     <div style="overflow-x:auto;">
     <table class="tbl">
-      <thead><tr><th>Stage</th><th class="r">SFA (n)</th><th class="r">LR (n)</th><th class="r">Sunrun (n)</th><th class="r">Cash</th><th class="r">Loan</th></tr></thead>
+      <thead><tr><th>Stage</th><th class="r">SFA (n)</th><th class="r">LR (n)</th><th class="r">Sunrun (n)</th><th class="r">Cash</th><th class="r">Loan</th><th class="r">Prepaid</th></tr></thead>
       <tbody>`;
   SL.forEach((s,i)=>{
     const sfa=w.ct?w.ct[i]:0, sfaN=w.ctN?w.ctN[i]:0;
@@ -560,6 +573,7 @@ function rw(wi){
     const sun=w.ctSun?w.ctSun[i]:0, sunN=w.ctSunn?w.ctSunn[i]:0;
     const cash=w.ctCash?w.ctCash[i]:0;
     const loan=w.ctLoan?w.ctLoan[i]:0;
+    const pre=w.ctPre?w.ctPre[i]:0;
     html+=`<tr>
       <td class="muted">${s}</td>
       <td class="r">${sfa?`${sfa}d${sfaN?` <span style="color:var(--tx3);font-size:11px;">(${sfaN})</span>`:''}`:''}<span class="${sfa?'':'zero'}${sfa?'':' r'}">${sfa?'':'—'}</span></td>
@@ -567,6 +581,7 @@ function rw(wi){
       <td class="r">${sun?`${sun}d${sunN?` <span style="color:var(--tx3);font-size:11px;">(${sunN})</span>`:''}`:''}<span class="${sun?'':'zero'}">${sun?'':'—'}</span></td>
       <td class="r">${cash?`${cash}d`:'<span class="zero">—</span>'}</td>
       <td class="r">${loan?`${loan}d`:'<span class="zero">—</span>'}</td>
+      <td class="r">${pre?`${pre}d`:'<span class="zero">—</span>'}</td>
     </tr>`;
   });
   html+=`</tbody></table></div></div>`;
@@ -577,16 +592,19 @@ function rw(wi){
     <div class="card full-col">
       <div class="card-header"><span class="card-title">Projects exceeding stage thresholds</span></div>
       <div style="overflow-x:auto;"><table class="tbl">
-        <thead><tr><th>Stage</th><th class="r">Threshold</th><th class="r">SFA</th><th class="r">LR</th><th class="r">Sunrun</th><th class="r">Total</th></tr></thead>
+        <thead><tr><th>Stage</th><th class="r">Threshold</th><th class="r">SFA</th><th class="r">LR</th><th class="r">Sunrun</th><th class="r">Cash</th><th class="r">Loan</th><th class="r">Prepaid</th><th class="r">Total</th></tr></thead>
         <tbody>`;
     w.p.stages.forEach((s,i)=>{
-      const sfa=w.p.sfa[i]||0,lr=w.p.lr[i]||0,sun=w.p.sun[i]||0,tot=sfa+lr+sun;
+      const sfa=(w.p.sfa&&w.p.sfa[i])||0,lr=(w.p.lr&&w.p.lr[i])||0,sun=(w.p.sun&&w.p.sun[i])||0,cash=(w.p.cash&&w.p.cash[i])||0,loan=(w.p.loan&&w.p.loan[i])||0,pre=(w.p.prepaid&&w.p.prepaid[i])||0,tot=sfa+lr+sun+cash+loan+pre;
       html+=`<tr>
         <td class="muted">${s}</td>
         <td class="r"><span style="font-size:11px;color:var(--tx3)">${w.p.th[i]}</span></td>
         <td class="r">${sfa||'<span class="zero">—</span>'}</td>
         <td class="r">${lr||'<span class="zero">—</span>'}</td>
         <td class="r">${sun||'<span class="zero">—</span>'}</td>
+        <td class="r">${cash||'<span class="zero">—</span>'}</td>
+        <td class="r">${loan||'<span class="zero">—</span>'}</td>
+        <td class="r">${pre||'<span class="zero">—</span>'}</td>
         <td class="r" style="font-weight:500">${tot||'<span class="zero">—</span>'}</td>
       </tr>`;
     });
