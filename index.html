@@ -370,6 +370,34 @@ async function refreshFromCRM(){
     week.cancelled = d.totals.cancelled;
     week.lastSynced = d.syncedAt;
 
+    // ── CYCLE TIMES ──
+    // d.cycleTimes structure: {sfa:{saleToSurvey:{avg,count},...}, lr:{...},...}
+    // Convert to dashboard format: ct[i] = SFA avg, ctN[i] = SFA count, ctLR[i] = LR avg, etc.
+    if(d.cycleTimes){
+      const stageOrder = ['saleToSurvey','surveyToPipeline','pipelineToPermit','permitToApproval','approvalToInstall','installProgress','doneToInspect','inspectToPto','ptoToApprove'];
+      const ct = [], ctN = [], ctLR = [], ctLRn = [], ctSun = [], ctSunn = [], ctCash = [], ctCashn = [], ctLoan = [], ctLoann = [], ctPre = [], ctPren = [];
+      stageOrder.forEach(stageKey => {
+        const sfa = d.cycleTimes.sfa?.[stageKey] || {avg:0,count:0};
+        const lr  = d.cycleTimes.lr?.[stageKey]  || {avg:0,count:0};
+        const sun = d.cycleTimes.sun?.[stageKey] || {avg:0,count:0};
+        const cash= d.cycleTimes.cash?.[stageKey]|| {avg:0,count:0};
+        const loan= d.cycleTimes.loan?.[stageKey]|| {avg:0,count:0};
+        const pre = d.cycleTimes.prepaid?.[stageKey] || {avg:0,count:0};
+        ct.push(sfa.avg || 0);     ctN.push(sfa.count);
+        ctLR.push(lr.avg || 0);    ctLRn.push(lr.count);
+        ctSun.push(sun.avg || 0);  ctSunn.push(sun.count);
+        ctCash.push(cash.avg || 0);ctCashn.push(cash.count);
+        ctLoan.push(loan.avg || 0);ctLoann.push(loan.count);
+        ctPre.push(pre.avg || 0);  ctPren.push(pre.count);
+      });
+      week.ct = ct;     week.ctN = ctN;
+      week.ctLR = ctLR; week.ctLRn = ctLRn;
+      week.ctSun = ctSun; week.ctSunn = ctSunn;
+      week.ctCash = ctCash; week.ctCashn = ctCashn;
+      week.ctLoan = ctLoan; week.ctLoann = ctLoann;
+      week.ctPre = ctPre; week.ctPren = ctPren;
+    }
+
     sv();
     rw(cw);
     btn.innerHTML = '✅ Synced!';
@@ -515,12 +543,7 @@ function rw(wi){
     <div class="card"><div class="card-header"><span class="card-title">PTOs</span><span class="card-sub">weekly</span></div><div style="padding:12px 16px;">${trendTable('ptos','var(--tl)')}</div></div>
   </div>`;
 
-  // ── SALES NOTES ──
-  html += `<div class="section-hdr"><span class="section-title">Sales Notes</span><span class="section-sub">— ${w.label}</span></div>
-  <div class="notes-grid">
-    <div class="note-card"><div class="note-label">SFA Sales</div><div class="note-text${isEd?' editable':''}" id="sfaNote" ${isEd?`contenteditable="false" onclick="makeEditable(this,'sfaNote',${wi})"`:''} >${w.sfaNote||'<span style="color:var(--tx3)">No notes</span>'}</div></div>
-    <div class="note-card"><div class="note-label">Regular Sales</div><div class="note-text${isEd?' editable':''}" id="regNote" ${isEd?`contenteditable="false" onclick="makeEditable(this,'regNote',${wi})"`:''} >${w.regNote||'<span style="color:var(--tx3)">No notes</span>'}</div></div>
-  </div>`;
+  // ── SALES NOTES REMOVED ──
 
   // ── CYCLE TIMES ──
   const hasCT=w.ct&&w.ct.some(v=>v>0);
