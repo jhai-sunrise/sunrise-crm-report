@@ -134,6 +134,8 @@ a{color:var(--ac);}
 .stat-pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;}
 .pill{font-size:11px;font-family:'Geist Mono',monospace;padding:3px 8px;border-radius:5px;background:var(--bg3);border:1px solid var(--border2);color:var(--tx2);display:inline-flex;align-items:center;gap:4px;}
 .pill span{color:var(--tx);font-weight:600;}
+.pill-zero{opacity:0.4;}
+.pill-zero span{color:var(--tx2);font-weight:400;}
 
 /* ── NOTES ── */
 .notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
@@ -411,6 +413,17 @@ async function refreshFromCRM(){
       });
     }
 
+    // ── RISK METRICS ──
+    // d.risk has all numeric fields (pcSfaN, i1SfaD, riRegN, prRegD, etc.).
+    // Overwrite week.risk numbers but PRESERVE manually-entered riNote / prNote.
+    if(d.risk){
+      if(!week.risk) week.risk = {};
+      const keepRi = week.risk.riNote, keepPr = week.risk.prNote;
+      Object.assign(week.risk, d.risk);
+      if(keepRi) week.risk.riNote = keepRi;
+      if(keepPr) week.risk.prNote = keepPr;
+    }
+
     sv();
     rw(cw);
     btn.innerHTML = '✅ Synced!';
@@ -495,14 +508,12 @@ function rw(wi){
   const va=vol.active||DV, vns=vol.newSales||DV, vi=vol.installs||DV, vp=vol.ptos||DV, vc=vol.closed||DV, vcn=vol.cancelled||DV;
 
   function pills(v){
-    const parts=[];
-    if(v.sfa)parts.push(`<span class="pill">SFA <span>${v.sfa}</span></span>`);
-    if(v.lr)parts.push(`<span class="pill">LR <span>${v.lr}</span></span>`);
-    if(v.sun)parts.push(`<span class="pill">Sunrun <span>${v.sun}</span></span>`);
-    if(v.cash)parts.push(`<span class="pill">Cash <span>${v.cash}</span></span>`);
-    if(v.loan)parts.push(`<span class="pill">Loan <span>${v.loan}</span></span>`);
-    if(v.prepaid)parts.push(`<span class="pill">Prepaid <span>${v.prepaid}</span></span>`);
-    return parts.join('');
+    // Show all 6 financers when ANY has a non-zero value; mute the zeros.
+    // Hide entirely only when every financer is 0/empty.
+    const total = (v.sfa||0)+(v.lr||0)+(v.sun||0)+(v.cash||0)+(v.loan||0)+(v.prepaid||0);
+    if(total===0) return '';
+    const p = (label, val) => `<span class="pill${val?'':' pill-zero'}">${label} <span>${val||0}</span></span>`;
+    return p('SFA', v.sfa) + p('LR', v.lr) + p('Sunrun', v.sun) + p('Cash', v.cash) + p('Loan', v.loan) + p('Prepaid', v.prepaid);
   }
 
   // Trend sparkline table for last 6 weeks
@@ -615,11 +626,10 @@ function rw(wi){
   const r=w.risk;
   if(r){
     const riskRows=[
-      {label:'Pre-construction',sfaN:r.pcSfaN,sfaD:r.pcSfaD,regN:r.pcRegN,regD:r.pcRegD},
-      {label:'Inspection 1',sfaN:r.i1SfaN,sfaD:r.i1SfaD,regN:r.i1RegN,regD:r.i1RegD},
-      {label:'Inspection 2',sfaN:r.i2SfaN,sfaD:r.i2SfaD,regN:r.i2RegN,regD:r.i2RegD},
-      {label:'Re-inspection',sfaN:r.riSfaN,sfaD:r.riSfaD,regN:r.riRegN,regD:r.riRegD},
-      {label:'Permit approval',sfaN:r.prSfaN,sfaD:r.prSfaD,regN:r.prRegN,regD:r.prRegD},
+      {label:'SFA/IPA Part 1 correction rate (weekly)',sfaN:r.i1SfaN,sfaD:r.i1SfaD,regN:r.i1RegN,regD:r.i1RegD},
+      {label:'SFA/IPA Part 2 correction rate (weekly)',sfaN:r.i2SfaN,sfaD:r.i2SfaD,regN:r.i2RegN,regD:r.i2RegD},
+      {label:'Reinspection % (MTD)',sfaN:r.riSfaN,sfaD:r.riSfaD,regN:r.riRegN,regD:r.riRegD},
+      {label:'PTO rejection % (MTD)',sfaN:r.prSfaN,sfaD:r.prSfaD,regN:r.prRegN,regD:r.prRegD},
     ];
     const hasRisk=riskRows.some(x=>x.sfaD||x.regD);
     if(hasRisk){
@@ -627,7 +637,7 @@ function rw(wi){
       <div class="card full-col">
         <div class="card-header"><span class="card-title">Pass/fail rates</span></div>
         <div style="overflow-x:auto;"><table class="tbl">
-          <thead><tr><th>Stage</th><th class="r">SFA</th><th class="r">SFA %</th><th class="r">REG</th><th class="r">REG %</th></tr></thead>
+          <thead><tr><th>Operational Risk</th><th class="r">SFA</th><th class="r">SFA %</th><th class="r">REG</th><th class="r">REG %</th></tr></thead>
           <tbody>`;
       riskRows.forEach(rx=>{
         const sp=pct(rx.sfaN,rx.sfaD),rp=pct(rx.regN,rx.regD);
