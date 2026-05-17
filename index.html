@@ -676,16 +676,18 @@ function rw(wi){
     <div class="card full-col">
       <div class="card-header"><span class="card-title">Project manager performance</span></div>
       <div style="overflow-x:auto;"><table class="tbl">
-        <thead><tr><th>Manager</th><th class="r">Active</th><th class="r">Won</th><th class="r">Lost</th><th class="r">On Hold</th></tr></thead>
+        <thead><tr><th>Manager</th><th class="r">Active</th><th class="r">Won</th><th class="r">Lost</th><th class="r">On Hold</th><th class="r">Total</th></tr></thead>
         <tbody>`;
     w.m.forEach(m=>{
       const tag=m.t==='SFA'?'fin-sfa':m.t==='REG'?'fin-lr':'fin-oth';
+      const total=(m.a||0)+(m.w||0)+(m.l||0)+(m.h||0);
       html+=`<tr>
         <td><div style="display:flex;align-items:center;gap:8px;"><span class="fin-tag ${tag}">${m.t}</span>${m.n}</div></td>
         <td class="r">${m.a||0}</td>
         <td class="r">${m.w||0}</td>
         <td class="r">${m.l||0}</td>
         <td class="r">${m.h||0}</td>
+        <td class="r" style="font-weight:500">${total}</td>
       </tr>`;
     });
     html+=`</tbody></table></div></div>`;
