@@ -424,6 +424,20 @@ async function refreshFromCRM(){
       if(keepPr) week.risk.prNote = keepPr;
     }
 
+    // ── PM SCORECARD ──
+    // d.pmScorecard is [{name, badge, active, won, lost, onHold}, ...]
+    // Map to dashboard's compact field names: n / t / a / w / l / h.
+    if(d.pmScorecard && Array.isArray(d.pmScorecard)){
+      week.m = d.pmScorecard.map(pm => ({
+        n: pm.name,
+        t: pm.badge,
+        a: pm.active || 0,
+        w: pm.won || 0,
+        l: pm.lost || 0,
+        h: pm.onHold || 0
+      }));
+    }
+
     sv();
     rw(cw);
     btn.innerHTML = '✅ Synced!';
@@ -658,19 +672,17 @@ function rw(wi){
 
   // ── PM SCORECARD ──
   if(w.m&&w.m.length){
-    const maxW=Math.max(...w.m.map(m=>m.w||0),1);
     html+=`<div class="section-hdr"><span class="section-title">PM Scorecard</span></div>
     <div class="card full-col">
       <div class="card-header"><span class="card-title">Project manager performance</span></div>
       <div style="overflow-x:auto;"><table class="tbl">
-        <thead><tr><th>Manager</th><th class="r">Active</th><th>Won progress</th><th class="r">Won</th><th class="r">Lost</th><th class="r">On Hold</th></tr></thead>
+        <thead><tr><th>Manager</th><th class="r">Active</th><th class="r">Won</th><th class="r">Lost</th><th class="r">On Hold</th></tr></thead>
         <tbody>`;
     w.m.forEach(m=>{
       const tag=m.t==='SFA'?'fin-sfa':m.t==='REG'?'fin-lr':'fin-oth';
       html+=`<tr>
         <td><div style="display:flex;align-items:center;gap:8px;"><span class="fin-tag ${tag}">${m.t}</span>${m.n}</div></td>
         <td class="r">${m.a||0}</td>
-        <td style="min-width:120px"><div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" style="width:${Math.round(((m.w||0)/maxW)*100)}%"></div></div><span style="font-size:12px;font-family:'Geist Mono',monospace;color:var(--tx2);min-width:24px;">${m.w||0}</span></div></td>
         <td class="r">${m.w||0}</td>
         <td class="r">${m.l||0}</td>
         <td class="r">${m.h||0}</td>
